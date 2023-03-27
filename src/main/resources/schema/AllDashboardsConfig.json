@@ -1,0 +1,18 @@
+{
+  "_comment": "Holds mapping for all visualizations supported by the application",
+  "dashboards" : [
+    {
+      "_comment":"",
+      "id": 1,
+      "name" : "Karmayogi Dashboards",
+      "isDefault" : true,
+      "code": "karmayogi",
+      "urls": [
+        {
+          "configuration": "/dashboard/getDashboardConfig/karmayogi/home",
+          "getCharts": "/dashboard/getChartV2/karmayogi"
+        }
+      ]
+    }
+  ]
+}

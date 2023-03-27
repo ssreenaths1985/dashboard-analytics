@@ -1,0 +1,5308 @@
+{
+  "ceo2": {
+    "chartName": "Total no of MDO Admins",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-role",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT \"count\" as MDOAdmins FROM \"dashboards-role-count\" WHERE role='MDO_ADMIN' AND __time = (SELECT MAX(__time) FROM \"dashboards-role-count\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "MDOAdmins"
+    ],
+    "controls": {
+      "key": "Total no of MDO Admins",
+      "value": "MDOAdmins"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of MDO Admins"
+  },
+  "ceo78910": {
+    "chartName": "Number of courses, by status",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseStatus, COUNT(courseID) AS \"count\" FROM \"dashboards-course\" WHERE courseStatus IN ('Live', 'Draft', 'Review') AND category='Course' AND __time = (SELECT MAX(__time) FROM \"dashboards-course\") GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "courseStatus"
+    ],
+    "controls": {
+      "key": "courseStatus",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Number of courses, by status"
+  },
+  "ceo78910a": {
+    "chartName": "Reviewed",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as ReviewedYetToBePublished  FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Review' AND courseReviewStatus='Reviewed' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "ReviewedYetToBePublished"
+    ],
+    "controls": {
+      "key": "Reviewed",
+      "value": "ReviewedYetToBePublished"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Reviewed"
+  },
+  "ceo11a11b121314": {
+    "chartName": "Number of Enrollments, by Status",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT CASE WHEN dbCompletionStatus = 0 THEN 'Not started' WHEN dbCompletionStatus = 1 THEN 'In progress' WHEN dbCompletionStatus = 2 THEN 'Completed' END AS completionStatus, COUNT(userID) AS \"count\" FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") GROUP BY 1"
+      }
+    ],
+    "chartType": "pie",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "count"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Number of Enrollments, by Status"
+  },
+  "ceo11a11b121314a": {
+    "chartName": "Total Users",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as TotalUsers FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "TotalUsers"
+    ],
+    "controls": {
+      "key": "Total Users",
+      "value": "TotalUsers"
+    },
+    "insight": {},
+    "_comment": "Total Users"
+  },
+  "ceo11a11b121314b": {
+    "chartName": "Total Unique Users",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) as TotalUniqueUsers FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "TotalUniqueUsers"
+    ],
+    "controls": {
+      "key": "Total Unique Users",
+      "value": "TotalUniqueUsers"
+    },
+    "insight": {},
+    "_comment": "Total Unique Users"
+  },
+  "ceo19a19b": {
+    "chartName": "Number of Programs, by status",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT CASE WHEN courseStatus = 'Live' THEN 'Published' WHEN courseStatus = 'Draft' THEN 'Drafted' WHEN courseStatus = 'Review' AND courseReviewStatus = 'Reviewed' THEN 'Reviewed' WHEN courseStatus = 'Review' AND courseReviewStatus <> 'Reviewed' THEN 'Under Review' END AS courseStatus, COUNT(courseID) AS \"count\" FROM \"dashboards-course\" WHERE courseStatus IN ('Live', 'Draft', 'Review') AND category='Program' AND __time = (SELECT MAX(__time) FROM \"dashboards-course\") GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "count"
+    ],
+    "controls": {
+      "key": "courseStatus",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Number of programs, by status"
+  },
+  "ceo19a19ba": {
+    "chartName": "Total programs",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as TotalPrograms FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus IN ('Live', 'Draft', 'Review') AND category='Program'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "TotalPrograms"
+    ],
+    "controls": {
+      "key": "Total programs",
+      "value": "TotalPrograms"
+    },
+    "insight": {},
+    "_comment": "Total programs"
+  },
+  "ceo20": {
+    "chartName": "Available content time in hrs",
+    "queries": [
+	  {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-details",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT SUM(courseDuration)/3600.0 as AvailableContentInHrs FROM \"dashboards-course-details\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course-details\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "AvailableContentInHrs"
+    ],
+    "controls": {
+      "key": "Available content time in hrs",
+      "value": "AvailableContentInHrs"
+    },
+    "insight": {},
+    "_comment": "Available content time in hrs"
+  },
+  "ceo3": {
+    "chartName": "No of organization with atleast one MDO Admin",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-role",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(orgID)) as Atleast1MDOAdmin FROM \"dashboards-org-role-count\" WHERE role='MDO_ADMIN' AND \"count\">=1 AND __time = (SELECT MAX(__time) FROM \"dashboards-org-role-count\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "Atleast1MDOAdmin"
+    ],
+    "controls": {
+      "key": "No of organization with atleast one MDO Admin",
+      "value": "Atleast1MDOAdmin"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "No of organization with atleast one MDO Admin"
+  },
+  "ceo7": {
+    "chartName": "Total no of courses published",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as CoursesPublished FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Live'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "CoursesPublished"
+    ],
+    "controls": {
+      "key": "Total no of courses published",
+      "value": "CoursesPublished"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of courses published"
+  },
+  "ceo8": {
+    "chartName": "Total no of courses still in draft",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as CoursesInDraft FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Draft'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "CoursesInDraft"
+    ],
+    "controls": {
+      "key": "Total no of courses still in draft",
+      "value": "CoursesInDraft"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of courses still in draft"
+  },
+  "ceo9": {
+    "chartName": "Total no of courses under review",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as UnderReview FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Review'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "UnderReview"
+    ],
+    "controls": {
+      "key": "Total no of courses under review",
+      "value": "UnderReview"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of courses under review"
+  },
+  "ceo10": {
+    "chartName": "Total no of courses reviewed and to be published",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as ReviewedYetToBePublished FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Review' AND courseReviewStatus='Reviewed'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "ReviewedYetToBePublished"
+    ],
+    "controls": {
+      "key": "Total no of courses reviewed and to be published",
+      "value": "ReviewedYetToBePublished"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of courses reviewed and to be published"
+  },
+  "ceo11": {
+    "chartName": "Total no of users enrolled for courses",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as Enrolled FROM \"dashboards-user-course-progress\" WHERE completionStatus <> 'not-enrolled' AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "Enrolled"
+    ],
+    "controls": {
+      "key": "Total no of users enrolled for courses",
+      "value": "Enrolled"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of users enrolled for courses"
+  },
+  "ceo12": {
+    "chartName": "Total no of users enrolled but not started",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as EnrolledNotStarted FROM \"dashboards-user-course-progress\" WHERE completionStatus='enrolled' AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "EnrolledNotStarted"
+    ],
+    "controls": {
+      "key": "Total no of users enrolled but not started",
+      "value": "EnrolledNotStarted"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of users enrolled but not started"
+  },
+  "ceo13": {
+    "chartName": "Total no of users enrolled and in progress",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as EnrolledAndInProgress FROM \"dashboards-user-course-progress\" WHERE completionStatus IN ('started', 'in-progress') AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "EnrolledAndInProgress"
+    ],
+    "controls": {
+      "key": "Total no of users enrolled and in progress",
+      "value": "EnrolledAndInProgress"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of users enrolled and in progress"
+  },
+  "ceo14": {
+    "chartName": "Total no of users enrolled and completed",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as EnrolledAndCompleted FROM \"dashboards-user-course-progress\" WHERE completionStatus IN ('completed') AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "EnrolledAndCompleted"
+    ],
+    "controls": {
+      "key": "Total no of users enrolled and completed",
+      "value": "EnrolledAndCompleted"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of users enrolled and completed"
+  },
+  "ceo15": {
+    "chartName": "Total no of users created yesterday",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(object_id)) as UsersCreatedYesterday FROM \"telemetry-events-syncts\" WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='create' AND LOWER(\"object_type\")='user' AND __time >= TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '2' DAY, 'P1D') - INTERVAL '05:30' HOUR TO MINUTE AND __time < TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '1' DAY, 'P1D') - INTERVAL '05:30' HOUR TO MINUTE"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "UsersCreatedYesterday"
+    ],
+    "controls": {
+      "key": "Total no of users created yesterday",
+      "value": "UsersCreatedYesterday"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of users created yesterday"
+  },
+  "ceo16": {
+    "chartName": "Total no of organizations with published courses",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(courseOrgID)) as OrgsWithPublishedCourses FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Live' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "OrgsWithPublishedCourses"
+    ],
+    "controls": {
+      "key": "Total no of organizations with published courses",
+      "value": "OrgsWithPublishedCourses"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of organizations with published courses"
+  },
+  "ceo17": {
+    "chartName": "Total users actively logged in yesterday",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(actor_id)) as ActiveLoginYesterday FROM \"telemetry-events-syncts\" WHERE \"eid\"='IMPRESSION' AND __time >= TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '2' DAY, 'P1D') - INTERVAL '05:30' HOUR TO MINUTE AND __time < TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '1' DAY, 'P1D') - INTERVAL '05:30' HOUR TO MINUTE "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "ActiveLoginYesterday"
+    ],
+    "controls": {
+      "key": "Total users actively logged in yesterday",
+      "value": "ActiveLoginYesterday"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total users actively logged in yesterday"
+  },
+  "ceo18": {
+    "chartName": "Total no of courses 100% consumed by atleast one user",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(courseID)) as CoursesConsumedByOneUser FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "CoursesConsumedByOneUser"
+    ],
+    "controls": {
+      "key": "Total no of courses 100% consumed by atleast one user",
+      "value": "CoursesConsumedByOneUser"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Total no of courses 100% consumed by atleast one user"
+  },
+  "ceo1": {
+    "chartName": "Total no of organizations onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_org_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_org_count"
+    ],
+    "controls": {
+      "key": "Total no of organizations onboarded",
+      "value": "mdo_total_org_count"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Total no of organizations onboarded",
+    "image" : "ceo1.jpg"
+  },
+  "ceo5": {
+    "chartName": "Total no of users created",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_registered_officer_count"
+    ],
+    "controls": {
+      "key": "Total no of users created",
+      "value": "mdo_total_registered_officer_count"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Total no of users created",
+    "image" : "CM1.jpg"
+  },
+  "vca01": {
+    "chartName": "Number of learners on the platform",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_registered_officer_count"
+    ],
+    "controls": {
+      "key": "Number of learners on the platform",
+      "value": "mdo_total_registered_officer_count"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Number of learners on the platform",
+    "image" : "CM1.jpg"
+  },
+  "vca02": {
+    "chartName": "Number of learners who have enrolled into the course",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"courseId\" : \"courseID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) as CourseLearners FROM \"dashboards-user-course-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") $courseId$ AND completionStatus IN ('started', 'in-progress', 'enrolled', 'completed') "
+       }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CourseLearners"
+    ],
+    "controls": {
+      "key": "Number of learners who have enrolled into the course",
+      "value": "CourseLearners"
+    },
+    "insight": {},
+    "_comment": "Number of learners who have enrolled into the course"
+  },
+  "vca03": {
+    "chartName": "Number of learners who have completed the course",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"courseId\" : \"courseID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) as CourseCompletion FROM \"dashboards-user-course-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") $courseId$ AND completionStatus='completed' "
+       }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CourseCompletion"
+    ],
+    "controls": {
+      "key": "Number of learners who have completed the course",
+      "value": "CourseCompletion"
+    },
+    "insight": {},
+    "_comment": "Number of learners who have completed the course"
+  },
+  "vca04": {
+    "chartName": "How many left the course in between",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"courseId\" : \"courseID\", \"courseId1\" : \"object_id\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT (SELECT COUNT(DISTINCT(userID)) FROM \"dashboards-user-course-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") $courseId$ AND completionStatus IN ('enrolled', 'started', 'in-progress')) - (SELECT COUNT(DISTINCT(actor_id)) FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' AND object_type='Course' $courseId1$  AND actor_type='User' AND __time >= CURRENT_TIMESTAMP - INTERVAL '1' MONTH AND actor_id NOT IN (SELECT DISTINCT(userID) FROM \"dashboards-user-course-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") $courseId$ AND completionStatus IN ('completed'))) as DropOuts"
+       }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "DropOuts"
+    ],
+    "controls": {
+      "key": "How many left the course in between",
+      "value": "DropOuts"
+    },
+    "insight": {},
+    "_comment": "How many left the course in between"
+  },
+  "vca05": {
+    "chartName": "Number of learners on different stages of course completion",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"courseId\" : \"courseID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT completionStatus, COUNT(DISTINCT(userID)) courseStatus FROM \"dashboards-user-course-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") $courseId$ GROUP BY completionStatus"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "courseStatus"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "courseStatus"
+    },
+    "enrichmentLookUp": {
+    },
+    "insight": {},
+    "_comment": "Number of learners on different stages of course completion"
+  },
+  "voff01": {
+    "chartName": "[CM1] Total competencies required for your current position",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"userId\" : \"userId\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_expected_user_competency_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_expected_user_competency_count"
+    ],
+    "controls": {
+      "key": "[CM1] Total competencies required for your current position",
+      "value": "dashboard_expected_user_competency_count"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Total number of competencies that are required by this officer as per his or her WAO",
+    "image" : "CM1.jpg"
+  },
+  "voff02": {
+    "chartName": "[CM2] Competencies self-declared on iGOT",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"userId\" : \"userId\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_declared_user_competency_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_declared_user_competency_count"
+    ],
+    "controls": {
+      "key": "[CM2] Competencies self-declared on iGOT",
+      "value": "dashboard_declared_user_competency_count"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Total number of competencies for which levels are declared in the passbook",
+    "image" : "CM2.jpg"
+  },
+  "voff03": {
+    "chartName": "[CM2.1] Competency self-declaration rate",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"userId\" : \"userId\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_competency_declaration_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "percentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "postAggregationTheory": "MULTIPLYPERCENT",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_competency_declaration_rate"
+    ],
+    "controls": {
+      "key": "[CM2.1] Competency self-declaration rate",
+      "value": "dashboard_user_competency_declaration_rate"
+    },
+    "enrichmentLookUp": {},
+    "insight": {},
+    "_comment": "Percentage of relevant competencies for which the MDO official has taken declared competency levels",
+    "image" : "CM2.1.jpg"
+  },
+  "voff04": {
+    "chartName": "[CM2.11] Average competency self-declaration rate for officers in their MDO",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_org_competency_declaration_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_org_competency_declaration_rate"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Competency self-declaration rate averaged for all officers in an MDO",
+    "image" : "CM2.11.jpg"
+  },
+  "voff05": {
+    "chartName": "[CM3] Total competency gaps identified",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_competency_gap_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_competency_gap_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total number of competencies for which gaps have been identified (gaps will be defined as difference between the level identified and the level required)",
+    "image" : "CM3.jpg"
+  },
+  "voff06": {
+    "chartName": "[PE1] Total number of courses currently enrolled in",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_course_enrollment_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_course_enrollment_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Number of courses in which the MDO official is currently enrolled",
+    "image" : "PE1.jpg"
+  },
+  "voff08": {
+    "chartName": "[CM3.1] Percentage of competency gaps for which course is enrolled",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_competency_gap_enrollment_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_competency_gap_enrollment_rate"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Percentage of total gaps identified for which the officer has enrolled in a course",
+    "image" : "CM3.1.jpg"
+  },
+  "voff09": {
+    "chartName": "[CM3.11] Average percentage of competency gaps for which courses are enrolled in - for an officer in their MDO",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_org_competency_gap_enrollment_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_org_competency_gap_enrollment_rate"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Percentage of total gaps identified for which the officer has enrolled in a course, averaged for all officers in an MDO",
+    "image" : "CM3.11.jpg"
+  },
+  "voff10": {
+    "chartName": "[PE2] Total number of courses completed",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_course_completion_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_course_completion_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Number of courses which the MDO official has completed"
+  },
+  "voff12": {
+    "chartName": "[CM4.1] Percentage of competency gaps closed",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_competency_gap_closed_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "DecimalPercentage",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "postAggregationTheory": "MULTIPLYPERCENT",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_competency_gap_closed_rate"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Percentage of total gaps identified that have been closed on the iGOT platform"
+  },
+  "voff12a": {
+    "chartName": "[CM4] Competency gaps closed",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"user_id\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_user_competency_gap_closed_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_user_competency_gap_closed_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total gaps identified that have been closed on the iGOT platform"
+  },
+  "voff13": {
+    "chartName": "[CM4.11] Average for all officers in the MDO: Percentage of competency gaps closed",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "dashboard_org_competency_gap_closed_rate",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "DecimalPercentage",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "postAggregationTheory": "MULTIPLYPERCENT",
+    "filter": "",
+    "aggregationPaths": [
+      "dashboard_org_competency_gap_closed_rate"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Percentage of total gaps identified that have been closed on the iGOT platform, averaged for all officers in an MDO"
+  },
+  "voverviewpe1501": {
+    "chartName": "Number of course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1M') as month_start, MAX(daily_course_count)  as CourseCompletion FROM ( SELECT __time, COUNT(courseID) as daily_course_count FROM \"dashboards-user-course-progress\" WHERE completionStatus='completed' AND __time >= TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '12' MONTH, 'P1M') - INTERVAL '05:30' HOUR TO MINUTE GROUP BY 1 ) GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CourseCompletion"
+    ],
+    "controls": {
+      "key": "month_start",
+      "value": "CourseCompletion"
+    },
+    "insight": {},
+    "_comment": "Monthly trend in the total number of courses completions, for last year"
+  },
+  "voverview103": {
+    "chartName": "Monthly average of onboarded users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(object_id))/12.0 as registered_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='create' AND LOWER(\"object_type\")='user' AND __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "registered_user_count"
+    ],
+    "controls": {
+      "key": "Monthly average of onboarded users",
+      "value": "registered_user_count"
+    },
+    "insight": {},
+    "_comment": "Average number of users registered in a month for the last year"
+  },
+  "voverview102": {
+    "chartName": "Users onboarded in the last year",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(object_id)) as registered_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='create' AND LOWER(\"object_type\")='user' AND __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "registered_user_count"
+    ],
+    "controls": {
+      "key": "Users onboarded in the last year",
+      "value": "registered_user_count"
+    },
+    "insight": {},
+    "_comment": "Number of users who registered on iGOT in the last year"
+  },
+  "voverview101": {
+    "chartName": "Users onboarded",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1M') as month_start, COUNT(DISTINCT(object_id)) as registered_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='create' AND LOWER(\"object_type\")='user' AND __time >= TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '12' MONTH, 'P1M') - INTERVAL '05:30' HOUR TO MINUTE GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "registered_user_count"
+    ],
+    "controls": {
+      "key": "month_start",
+      "value": "registered_user_count"
+    },
+    "insight": {},
+    "_comment": "Monthly trend in the number of users registered"
+  },
+  "voverviewcp61": {
+    "chartName": "Courses added last year",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(object_id)) as course_count FROM \"telemetry-events-syncts\"  WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='live' AND LOWER(\"object_type\")='collection' AND __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "course_count"
+    ],
+    "controls": {
+      "key": "Courses added last year",
+      "value": "course_count"
+    },
+    "insight": {},
+    "_comment": "Courses added last year"
+  },
+  "voverviewcp601": {
+    "chartName": "Courses added on iGOT",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1M') as month_start, COUNT(DISTINCT(object_id)) as course_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='AUDIT' AND LOWER(\"edata_state\")='live' AND LOWER(\"object_type\")='collection' AND __time >= TIME_FLOOR(CURRENT_TIMESTAMP - INTERVAL '12' MONTH, 'P1M') - INTERVAL '05:30' HOUR TO MINUTE GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "course_count"
+    ],
+    "controls": {
+      "key": "month_start",
+      "value": "course_count"
+    },
+    "insight": {},
+    "_comment": "Monthly trend in the number of courses published on iGOT"
+  },
+  "voverview008": {
+    "chartName": "[PE2.2] Percentage of users onboarded, by MDO",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "pie",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "MDOName",
+      "value": "mdo_registered_officer_count"
+    },
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "insight": {},
+    "_comment": "Percentage of users from each MDO out of the total number of registered users"
+  },
+  "voverviewpe152": {
+    "chartName": "Top 10 MDOs, by course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT userOrgID, COUNT(userID) as CountOfCourses FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") GROUP BY 1 ORDER BY 2 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "CountOfCourses"
+    ],
+    "controls": {
+      "key": "userOrgID",
+      "value": "CountOfCourses"
+    },
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "insight": {},
+    "_comment": "Top 10 MDOs, by number of course completions by it's officials"
+  },
+  "voverviewpe21": {
+    "chartName": "Top 10 MDOs, by users onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItemsLimit10",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "MDOName",
+      "value": "mdo_registered_officer_count"
+    },
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "insight": {},
+    "_comment": "Top 10 MDOs, by number of users onboarded"
+  },
+  "voverview006a": {
+    "chartName": "Percentage of users onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "pie",
+    "allowZero": true,
+    "valueType": "percentage",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItemsAndGroup",
+    "postAggregationTheory": "PERCENTAGEHELPER",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "MDOName",
+      "value": "mdo_registered_officer_count"
+    },
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "insight": {},
+    "_comment": "Percentage of registrations completed within each MDO"
+  },
+  "voverviewcp63": {
+    "chartName": "Top 10 MDOs, by live courses",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseOrgID, COUNT(courseID) as CountOfCourses FROM \"dashboards-course\" WHERE courseStatus='Live' AND category='Course' AND __time = (SELECT MAX(__time) FROM \"dashboards-course\") GROUP BY 1 ORDER BY 2 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "limit": 20,
+    "filter": "",
+    "aggregationPaths": [
+      "CountOfCourses"
+    ],
+    "controls": {
+      "key": "courseOrgID",
+      "value": "CountOfCourses"
+    },
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "insight": {},
+    "_comment": "Top 10 MDOs, by number of currently live courses"
+  },
+  "voverviewpe15": {
+    "chartName": "Number of course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as NumberOfCourses FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfCourses"
+    ],
+    "controls": {
+      "key": "Number of course completions",
+      "value": "NumberOfCourses"
+    },
+    "insight": {},
+    "_comment": "Total number of courses completions"
+  },
+  "voverviewpe15b": {
+    "chartName": "Total number of course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as NumberOfCourses FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfCourses"
+    ],
+    "controls": {
+      "key": "Total number of course completions",
+      "value": "NumberOfCourses"
+    },
+    "insight": {},
+    "_comment": "Total number of courses completions"
+  },
+  "voverviewpe2": {
+    "chartName": "Number of users onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_registered_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Number of MDO officials who are registered on iGOT"
+  },
+  "voverviewpe1": {
+    "chartName": "MDOs onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_org_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_org_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total number of Ministries, Departments, and Organizations (MDOs) onboarded on iGOT"
+  },
+  "voverviewcp6": {
+    "chartName": "Live courses on iGOT",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-details",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as NumberOfCourses FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Live' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfCourses"
+    ],
+    "controls": {
+      "key": "Live courses on iGOT",
+      "value": "NumberOfCourses"
+    },
+    "insight": {},
+    "_comment": "Total number of courses published on iGOT"
+  },
+  "vcbp106": {
+    "chartName": "1.06 CBP completion rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "Numerator",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, COUNT(DISTINCT(userID)) as TotalNumberOfUsers FROM \"dashboards-user-course-progress\" WHERE completionStatus='completed' $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") GROUP BY 1,2 ORDER BY 1"
+      },
+      {
+        "dataSource": "DRUID",
+        "module": "Denominator",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, COUNT(DISTINCT(userID)) as TotalNumberOfUsers FROM \"dashboards-user-course-progress\" WHERE completionStatus IN ('in-progress', 'completed') $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-progress\") GROUP BY 1,2 ORDER BY 1"
+      }
+    ],
+    "chartType": "metriccollection",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "postAggregationTheory": "DRUID/DRUID",
+    "filter": "",
+    "aggregationPaths": [
+      "courseName"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "TotalNumberOfUsers"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vcbpcp6": {
+    "chartName": "Top 10 courses, by average user rating",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-rating-summary",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, AVG(ratingAverage) as RatingAverage FROM \"dashboards-course-details\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course-details\") AND ratingCount<>0 $mdo$ GROUP BY 1,2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "RatingAverage"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "RatingAverage"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses by the CBP provider, by average user rating"
+  },
+  "vcbp109": {
+    "chartName": "[CP8] No. of courses mapped (by competency)",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-competency",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT sum(liveCourseCount) as LiveCourseCount FROM \"dashboards-frac-competency\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-frac-competency\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "LiveCourseCount"
+    ],
+    "controls": {
+      "key": "[CP8] No. of courses mapped (by competency)",
+      "value": "LiveCourseCount"
+    },
+    "insight": {},
+    "_comment": "For each competency, number of courses mapped to that competency"
+  },
+  "vcbp991": {
+    "chartName": "Number of courses by the CBP provider",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as CoursesByCBP FROM \"dashboards-course\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course\") $mdo$ AND courseStatus='Live' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CoursesByCBP"
+    ],
+    "controls": {
+      "key": "Number of courses by the CBP provider",
+      "value": "CoursesByCBP"
+    },
+    "insight": {},
+    "_comment": "Total number of live courses by the CBP provider"
+  },
+  "vcbp999": {
+    "chartName": "CBP Provider Leaderboard",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseOrgID, COUNT(courseID) as CoursesByCBP FROM \"dashboards-course\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course\")  AND courseStatus='Live' AND category IN ('Course', 'Program') GROUP BY courseOrgID ORDER BY CoursesByCBP DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "completedCount"
+    ],
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "controls": {
+      "key": "courseOrgID",
+      "value": "CoursesByCBP"
+    },
+    "insight": {},
+    "_comment": "CBP Provider Leaderboard"
+  },
+  "vcbp881": {
+    "chartName": "List of CBP providers and course count",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseOrgID, COUNT(courseID) as CoursesByCBP FROM \"dashboards-course\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course\")  AND courseStatus='Live' AND category IN ('Course', 'Program') GROUP BY courseOrgID "
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CoursesByCBP"
+    ],
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "controls": {
+      "key": "courseOrgID",
+      "value": "CoursesByCBP"
+    },
+    "insight": {},
+    "_comment": "List of CBP providers and course count"
+  },
+  "vcbp108": {
+    "chartName": "[CP7] No. of officers mapped (by competency)",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-competency",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT SUM(officerCountExpected) as NumberOfOfficersMapped FROM \"dashboards-frac-competency\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-frac-competency\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfOfficersMapped"
+    ],
+    "controls": {
+      "key": "[CP7] No. of officers mapped (by competency)",
+      "value": "NumberOfOfficersMapped"
+    },
+    "insight": {},
+    "_comment": "For each competency, number of officers mapped to that competency"
+  },
+  "vcbpcp5": {
+    "chartName": "Top 10 courses, by number of completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, COUNT(DISTINCT(userID)) as NumberOfOfficers FROM \"dashboards-user-course-program-progress\" WHERE courseStatus='Live' $mdo$ AND category='Course' AND dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") GROUP BY 1,2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfOfficers"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "NumberOfOfficers"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses by the CBP provider, by number of officers who completed the course"
+  },
+  "vcbpcp4": {
+    "chartName": "Top 10 courses, by number of enrolments",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, COUNT(DISTINCT(userID)) as NumberOfOfficers FROM \"dashboards-user-course-program-progress\" WHERE courseStatus='Live' $mdo$ AND category='Course' AND dbCompletionStatus=0 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") GROUP BY 1,2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "NumberOfOfficers"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "NumberOfOfficers"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses by the CBP provider, by number of officers who enrolled for the course"
+  },
+  "vcbpcp3": {
+    "chartName": "Top 10 courses, by number of visits",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"\\\"telemetry-events-syncts\\\".context_channel\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT \"dashboards-course-details\".courseID AS courseID, \"dashboards-course-details\".courseName AS courseName, COUNT(\"telemetry-events-syncts\".actor_id) AS visits FROM \"telemetry-events-syncts\" INNER JOIN \"dashboards-course-details\" ON \"telemetry-events-syncts\".object_id=\"dashboards-course-details\".courseID WHERE \"telemetry-events-syncts\".eid='IMPRESSION' AND \"telemetry-events-syncts\".object_type='Course' AND \"telemetry-events-syncts\".actor_type='User' $mdo$ AND \"telemetry-events-syncts\".__time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH AND \"dashboards-course-details\".__time = (SELECT MAX(__time) FROM \"dashboards-course-details\") GROUP BY 1, 2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "visits"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "visits"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses by the CBP provider, by total number of officers who visited the course page"
+  },
+  "vcbpcp2": {
+    "chartName": "Average rating across all courses by the CBP provider",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course-competency",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT AVG(ratingAverage) as AverageRating FROM \"dashboards-course-details\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course-details\") AND ratingCount<>0 $mdo$"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "AverageRating"
+    ],
+    "controls": {
+      "key": "Average rating across all courses by the CBP provider",
+      "value": "AverageRating"
+    },
+    "insight": {},
+    "_comment": "Use ratings averaged for all courses by the CBP provider"
+  },
+  "vcbpcp1": {
+    "chartName": "Number of courses on iGOT platform",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as TotalCourses FROM \"dashboards-course\" WHERE  __time = (SELECT MAX(__time) FROM \"dashboards-course\") AND courseStatus='Live' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "TotalCourses"
+    ],
+    "controls": {
+      "key": "Number of courses on iGOT platform",
+      "value": "TotalCourses"
+    },
+    "insight": {},
+    "_comment": "Total number of live courses on the iGOT platform"
+  },
+  "vspv318": {
+    "chartName": "Total competencies for which no course exists on iGOT",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-frac-competency",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(*) as TotalCompetencies FROM \"dashboards-frac-competency\" WHERE liveCourseCount=0 AND __time = (SELECT MAX(__time) FROM \"dashboards-frac-competency\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "TotalCompetencies"
+    ],
+    "controls": {
+      "key": "Total competencies for which no course exists on iGOT",
+      "value": "TotalCompetencies"
+    },
+    "insight": {},
+    "_comment": "Total competencies for which there is no course available on iGOT"
+  },
+  "vmdope3": {
+    "chartName": "Trend in daily average time spent by a user (in minutes)",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"dimension_channel\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT DATE_TRUNC('day', __time + INTERVAL '05:30' HOUR TO MINUTE) as day_start, SUM(total_time_spent) / (COUNT(DISTINCT(uid)) * 60.0) as avg_user_time FROM \"summary-events\" WHERE dimensions_type='app' $mdo$ AND __time >= CURRENT_TIMESTAMP - INTERVAL '90' DAY GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "mins",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_user_time"
+    ],
+    "controls": {
+      "key": "day_start",
+      "value": "avg_user_time"
+    },
+    "insight": {},
+    "_comment": "Trend in daily average time spent by a user, for last 3 months"
+  },
+  "vmdo323": {
+    "chartName": "[PE2.6] Average for MDOs: Percentage of users active in the last week",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "MDO1",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(actor_id)) as active_user_count FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' AND __time >= CURRENT_TIMESTAMP - INTERVAL '7' DAY"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "postAggregationTheory": "DRUID/REDIS",
+    "action": "sumOfValuesAction",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count",
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "[PE2.6] Average for MDOs: Percentage of users active in the last week",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vmdope24": {
+    "chartName": "Percentage of users active in the last week",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "MDO1",
+        "requestQueryMap": "{\"mdo\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(actor_id)) as active_user_count FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' $mdo$ AND __time >= CURRENT_TIMESTAMP - INTERVAL '7' DAY"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "postAggregationTheory": "DRUID/REDIS",
+    "action": "ListOfAllItems",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count",
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "Percentage of users active in the last week",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Percentage of registered MDO officials who logging in during the last 7 days"
+  },
+  "vmdope2": {
+    "chartName": "Trend in number of weekly active users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT DATE_TRUNC('week', __time + INTERVAL '05:30' HOUR TO MINUTE) as week_start, COUNT(DISTINCT(actor_id)) as active_user_count FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' $mdo$ AND __time >= CURRENT_TIMESTAMP - INTERVAL '3' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "week_start",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Trend in number of MDO officials logging in 7-day time periods, for last 3 months"
+  },
+  "vmdo991": {
+    "chartName": "Top 10 performers in my MDO, by number of courses completed",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"userOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT userID, CONCAT(firstName, ' ', CASE WHEN lastName IS NULL OR LENGTH(lastName)>1 THEN SUBSTR(lastName, 1, 1) ELSE lastName END, '*****') AS userName, COUNT(DISTINCT(courseID)) AS completedCount  FROM \"dashboards-user-course-program-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") AND dbCompletionStatus=2 AND category='Course' $mdo$ GROUP BY 1, 2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "completedCount"
+    ],
+    "controls": {
+      "key": "userName",
+      "value": "completedCount"
+    },
+    "insight": {},
+    "_comment": "Top 10 performers in my MDO, based on the number of courses they have completed"
+  },
+  "vmdo992": {
+    "chartName": "Top 10 courses, by number of completions by users in my MDO",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"userOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) AS completedCount, courseID, courseName FROM \"dashboards-user-course-program-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") AND dbCompletionStatus=2 AND category='Course' AND courseStatus='Live' $mdo$ GROUP BY 2,3 ORDER BY 1 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "completedCount"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "completedCount"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses accross the platform, by number of completions by users in my MDO"
+  },
+  "vmdo993": {
+    "chartName": "Roles in my MDO",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-org-role-count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT CASE WHEN role='CBP_ADMIN' THEN 'CBP Admins' WHEN role='MDO_ADMIN' THEN 'MDO Admins' WHEN role='MDO_LEADER' THEN 'MDO leaders' WHEN role='CONTENT_CREATOR' THEN 'Content creators' WHEN role='CONTENT_PUBLISHER' THEN 'Content publishers' WHEN role='CONTENT_REVIEWER' THEN 'Content reviewers' END AS role, \"count\" FROM \"dashboards-org-role-count\" WHERE role IN ('CBP_ADMIN', 'MDO_ADMIN', 'MDO_LEADER', 'CONTENT_CREATOR', 'CONTENT_PUBLISHER', 'CONTENT_REVIEWER') $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-org-role-count\")"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "count"
+    ],
+    "controls": {
+      "key": "role",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Numbers of MDO officials belonging to each of the roles "
+  },
+  "vmdope22": {
+    "chartName": "Number of users active in last week",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(actor_id)) as active_user_count  FROM \"telemetry-events-syncts\"  WHERE eid = 'IMPRESSION' $mdo$ AND __time >= CURRENT_TIMESTAMP - INTERVAL '7' DAY"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "Number of users active in last week",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Number of MDO officials who logged in during the last 7 days"
+  },
+  "vmdo32": {
+    "chartName": "[PE1.5] Number of officers registered",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"context_rollup_l1\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1W') as week_start, COUNT(DISTINCT(object_id)) as registered_user_count FROM \"telemetry-events-syncts\" WHERE eid='AUDIT' AND LOWER(edata_state)='create' AND LOWER(object_type)='user' $mdo$ AND __time >= CURRENT_TIMESTAMP - INTERVAL '3' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "registered_user_count"
+    ],
+    "controls": {
+      "key": "week_start",
+      "value": "registered_user_count"
+    },
+    "insight": {},
+    "_comment": "Number of weekly officials onboarded on iGOT"
+  },
+  "vmdo222": {
+    "chartName": "[CP14.1] Average for MDOs: Average competency gaps per officer",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT AVG(gap) as AverageGap FROM ( SELECT orgID, AVG(gap) AS gap FROM ( SELECT userID, orgID, CAST(SUM(competencyGap) AS FLOAT) AS gap FROM \"dashboards-user-competency-gap\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") GROUP BY 1, 2 ) GROUP BY 1 ) "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "AverageGap"
+    ],
+    "controls": {
+      "key": "[CP14.1] Average for MDOs: Average competency gaps per officer",
+      "value": "AverageGap"
+    },
+    "insight": {},
+    "_comment": "Average number of competency gaps per officer, averaged for all MDOs"
+  },
+  "vmdo211": {
+    "chartName": "[CP14] Average competency gaps per officer",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT AVG(gap) as GAP FROM ( SELECT userID, CAST(SUM(competencyGap) AS FLOAT) AS gap FROM \"dashboards-user-competency-gap\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") $mdo$  GROUP BY 1 )  "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "GAP"
+    ],
+    "controls": {
+      "key": "[CP14] Average competency gaps per officer",
+      "value": "GAP"
+    },
+    "insight": {},
+    "_comment": "The average number of competency gaps per officer in the MDO"
+  },
+  "vmdo208": {
+    "chartName": "[CP1] Competencies for which there is no course available on iGOT",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-expected-user-competency",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(competencyID)) as \"Gap\" FROM \"dashboards-expected-user-competency\" WHERE liveCourseCount=0 AND  __time = (SELECT MAX(__time) FROM \"dashboards-expected-user-competency\") $mdo$ "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Gap"
+    ],
+    "controls": {
+      "key": "[CP1] Competencies for which there is no course available on iGOT",
+      "value": "Gap"
+    },
+    "insight": {},
+    "_comment": "Number of competencies that are mapped to officials of your MDO, for which no course exists on iGOT"
+  },
+  "vspvcp1": {
+    "chartName": "Top 10 courses, by user ratings",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseID, courseName, AVG(ratingAverage) as ratingAverage FROM \"dashboards-course-details\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course-details\") AND ratingCount<>0 GROUP BY 1, 2 ORDER BY 3 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "ratingAverage"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "ratingAverage"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses across the platform, by average user rating"
+  },
+  "vspv991": {
+    "chartName": "Top 10 courses, by course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) AS completedCount, courseID, courseName FROM \"dashboards-user-course-program-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") AND dbCompletionStatus=2 AND category='Course' AND courseStatus='Live' GROUP BY 2,3 ORDER BY 1 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "completedCount"
+    ],
+    "controls": {
+      "key": "courseName",
+      "value": "completedCount"
+    },
+    "insight": {},
+    "_comment": "Top 10 courses across the platform, by number of users that completed the course"
+  },
+  "vspv992": {
+    "chartName": "Top 10 MDOs, by course completions",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(*) AS completedCount, userOrgID FROM \"dashboards-user-course-program-progress\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") AND dbCompletionStatus=2 AND category='Course'  GROUP BY 2 ORDER BY 1 DESC LIMIT 10"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "completedCount"
+    ],
+    "enrichmentLookUp": {
+      "dataSource": "REDIS",
+      "tableName": "mdo_name_by_org",
+      "key": "id",
+      "value": "name"
+    },
+    "controls": {
+      "key": "userOrgID",
+      "value": "completedCount"
+    },
+    "insight": {},
+    "_comment": "Top 10 MDOs, by number of course completions by it's officials"
+  },
+  "vspv315": {
+    "chartName": "[PE7] Percentage of competency gaps by course progress",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT completionStatus, competencyGap, totalGap, (100.0 * competencyGap / totalGap) AS percentGap FROM ( SELECT completionStatus, competencyGap, (SELECT SUM(competencyGap) FROM \"dashboards-user-competency-gap\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\")) AS totalGap FROM ( SELECT CASE WHEN completionStatus = 'not-enrolled' THEN 'not-started' WHEN completionStatus = 'enrolled' THEN 'not-started' WHEN completionStatus = 'started' THEN 'in-progress' WHEN completionStatus = 'in-progress' THEN 'in-progress' ELSE 'completed' END AS completionStatus, SUM(competencyGap) AS competencyGap FROM \"dashboards-user-competency-gap\" WHERE competencyGap>0 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") GROUP BY 1 ) )"
+      }
+    ],
+    "chartType": "stackedbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "percentGap"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "percentGap"
+    },
+    "insight": {},
+    "_comment": "Percentage of competency gaps by enrollment status of courses - not started, in progress, completed"
+  },
+  "vspv314": {
+    "chartName": "3.14 Total competency gaps",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT CASE WHEN completionStatus = 'not-enrolled' THEN 'not-started' WHEN completionStatus = 'enrolled' THEN 'not-started' WHEN completionStatus = 'started' THEN 'enrolled' WHEN completionStatus = 'in-progress' THEN 'in-progress' ELSE 'completed' END AS completionStatus, SUM(competencyGap) as GAP FROM \"dashboards-user-competency-gap\" WHERE competencyGap>0 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "GAP"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "GAP"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vspv313": {
+    "chartName": "[CM2] Average competency gaps per officer",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT AVG(gap) as averageGap FROM (SELECT orgID, AVG(gap) AS gap FROM (SELECT userID, orgID, CAST(SUM(competencyGap) AS FLOAT) AS gap FROM \"dashboards-user-competency-gap\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") GROUP BY 1, 2 ) GROUP BY 1 )"
+      }
+    ],
+    "chartType": "metric",
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "averageGap"
+    ],
+    "controls": {
+      "key": "[CM2] Average competency gaps per officer",
+      "value": "averageGap"
+    },
+    "insight": {},
+    "_comment": "Average number of competency gaps per officer on iGOT"
+  },
+  "vmdo355": {
+    "chartName": "[PE4.2] Percentage of competency gaps, by course progress",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"orgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-competency-gap",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT completionStatus, competencyGap, totalGap, (100.0 * competencyGap / totalGap) AS percentGap FROM ( SELECT completionStatus, competencyGap, (SELECT SUM(competencyGap) FROM \"dashboards-user-competency-gap\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\")) AS totalGap FROM ( SELECT CASE WHEN completionStatus = 'not-enrolled' THEN 'not-started' WHEN completionStatus = 'enrolled' THEN 'not-started' WHEN completionStatus = 'started' THEN 'in-progress' WHEN completionStatus = 'in-progress' THEN 'in-progress' ELSE 'completed' END AS completionStatus, SUM(competencyGap) AS competencyGap FROM \"dashboards-user-competency-gap\" WHERE competencyGap>0 AND orgID='0134442394250854403' AND __time = (SELECT MAX(__time) FROM \"dashboards-user-competency-gap\") GROUP BY 1 ) )   "
+      }
+    ],
+    "chartType": "stackedbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "percentGap"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "percentGap"
+    },
+    "insight": {},
+    "_comment": "Percentage of the competency gaps for which courses are not started, in progress, and completed."
+  },
+  "vmdo303": {
+    "chartName": "[PE1.2] Registration rate",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "DecimalPercentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "postAggregationTheory": "REDIS/REDIS",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count",
+      "mdo_total_officer_count"
+    ],
+    "controls": {
+      "key": "[PE1.2] Registration rate",
+      "value": "total_officer_count"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vmdo304": {
+    "chartName": "[PE1.4] Average for MDOs: registration rate",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "DecimalPercentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "postAggregationTheory": "REDIS/REDIS",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count",
+      "mdo_total_officer_count"
+    ],
+    "controls": {
+      "key": "[PE1.4] Average for MDOs: registration rate",
+      "value": "total_officer_count"
+    },
+    "insight": {},
+    "_comment": "The registration rate averaged for all MDOs on iGOT"
+  },
+  "vmdo106": {
+    "chartName": "[WA2.2] Work allocation order approval rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_data_deptId\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-officer",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(edata_cb_data_wa_userId)) as officer_count FROM \"cb-work-order-officers\" WHERE LOWER(edata_cb_data_status)='published' $mdo$"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "percentage",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "postAggregationTheory": "DRUID/REDIS",
+    "filter": "",
+    "aggregationPaths": [
+      "officer_count",
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "Officer Count",
+      "value": "officer_count"
+    },
+    "insight": {},
+    "_comment": "Percentage of officers in MDO who have work orders that have been issued"
+  },
+  "vmdope1": {
+    "chartName": "Number of registered users in my MDO",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Number of MDO officials who are registered on iGOT"
+  },
+  "vmdo101": {
+    "chartName": "Number of officers in MDO",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"mdo\" : \"mdo\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "The total count of officers that are part of MDO"
+  },
+  "vspv101a": {
+    "chartName": "[WA1] Approved work allocation orders",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(edata_cb_data_wa_userId)) as ApprovedWAO FROM \"cb-work-order-properties\" WHERE LOWER(edata_cb_data_status)='published'"
+      }
+    ],
+    "chartType": "metric",
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "ApprovedWAO"
+    ],
+    "controls": {
+      "key": "[WA1] Approved work allocation orders",
+      "value": "ApprovedWAO"
+    },
+    "insight": {},
+    "_comment": "Number of officers in MDO for whom a work order has been issued"
+  },
+  "registrationRateByMdo": {
+    "chartName": "Registration Count by MDO (Top 5)",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary_events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT DATE_TRUNC('day', __time + INTERVAL '05:30' HOUR TO MINUTE) as day_start, SUM(total_time_spent) / COUNT(DISTINCT(uid)) as avg_user_time FROM \"summary-events\" WHERE __time >= TIMESTAMP '%StartDate%' and __time <= TIMESTAMP '%EndDate%' GROUP BY 1"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_user_time"
+    ],
+    "controls": {
+      "key": "day_start",
+      "value": "avg_user_time"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "timeSpentByDailyActiveUsersMetric": {
+    "chartName": "Time Spent By Daily Active Users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary_events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT SUM(total_time_spent) / COUNT(DISTINCT(uid)) as avg_user_time FROM \"summary-events\" WHERE __time >= TIMESTAMP '%StartDate%' and __time <= TIMESTAMP '%EndDate%'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "mins",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_user_time"
+    ],
+    "controls": {
+      "key": "Time Spent By Daily Active Users",
+      "value": "avg_user_time"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "timeSpentOnEachLogin": {
+    "chartName": "[PE7.01] Average time spent on iGOT during each login",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary_events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1W') AS day_start, SUM(total_time_spent) / COUNT(uid) AS avg_session_time FROM \"summary-events\" WHERE __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_session_time"
+    ],
+    "controls": {
+      "key": "day_start",
+      "value": "avg_session_time"
+    },
+    "insight": {},
+    "_comment": "Weekly trend in the average time spent on iGOT during each login"
+  },
+  "timeSpentByDailyActiveUsers": {
+    "chartName": "[PE9.01] Average time spent on iGOT by daily active users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary_events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1W') AS day_start, SUM(total_time_spent) / COUNT(DISTINCT(uid)) AS avg_user_time FROM \"summary-events\" WHERE __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "mins",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_user_time"
+    ],
+    "controls": {
+      "key": "day_start",
+      "value": "avg_user_time"
+    },
+    "insight": {},
+    "_comment": "Weekly trend in the average time spent on iGOT by daily active users"
+  },
+  "numberOfWeeklyActiveUsers": {
+    "chartName": "[PE4.51] Active users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1W') AS week_start, COUNT(DISTINCT(uid)) AS active_user_count FROM \"summary-events\" WHERE __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "week_start",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Weekly trend in the number of unique users that interact with iGOT (in 7-day time periods)"
+  },
+  "comptenciesTaggedPerRolePosition": {
+    "chartName": "[WA7.3] Average number of competencies tagged per role, by type",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select  edata_cb_data_wa_competency_additionalProperties_competencyType, COUNT(distinct edata_cb_data_wa_competency_id ) as total_competency from \"cb-work-order-properties\" where edata_cb_data_wa_role_type  = 'ROLE' group by 1"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "total_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_data_wa_competency_additionalProperties_competencyType",
+      "value": "total_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "comptenciesApprovalRateByType": {
+    "chartName": "[CM3.7] Competency approval rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_sub_type, CAST(COUNT(CASE WHEN Status='Verified' THEN edata_cb_object_id END) AS FLOAT) / CAST(COUNT(edata_cb_object_id) AS FLOAT) *100.0 AS approval_rate FROM (   SELECT edata_cb_object_org, edata_cb_object_id, edata_cb_object_sub_type,   LATEST(edata_state, 20) AS Status   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency' AND edata_cb_object_sub_type NOT IN ('Competency', ' ') GROUP BY 1,2,3 ) GROUP BY edata_cb_object_sub_type"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "percentage",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "percentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "approval_rate"
+    ],
+    "controls": {
+      "key": "edata_cb_object_sub_type",
+      "value": "approval_rate"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "comptenciesRejectedByType": {
+    "chartName": "[CM5.4] Number of competencies rejected",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_sub_type, COUNT(edata_cb_object_id) AS Rejected_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, edata_cb_object_sub_type,   LATEST(edata_state, 20) AS Status   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency' AND edata_cb_object_sub_type NOT IN ('Competency', ' ') GROUP BY 1,2,3 ) WHERE Status='Rejected' GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Rejected_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_sub_type",
+      "value": "Rejected_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "comptenciesVerifiedByType": {
+    "chartName": "[CM3.2] Number of competencies approved",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_sub_type, COUNT(edata_cb_object_id) AS Verified_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, edata_cb_object_sub_type,   LATEST(edata_state, 20) AS Status   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency' AND edata_cb_object_sub_type NOT IN ('Competency', ' ') GROUP BY 1,2,3 ) WHERE Status='Verified' GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Verified_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_sub_type",
+      "value": "Verified_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "comptenciesSubmittedByType": {
+    "chartName": "[CM2.2] Number of competencies submitted",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_sub_type, COUNT(edata_cb_object_id) AS submitted_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, edata_cb_object_sub_type,   LATEST(edata_state, 20) AS Status   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency' AND edata_cb_object_sub_type NOT IN ('Competency', ' ')  GROUP BY 1,2,3 ) GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "submitted_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_sub_type",
+      "value": "submitted_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "avgTimeSpentUsers": {
+    "chartName": "Average Time Spent Users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT sum(edata_time_spent)/count( uid)/60 avg_time_spent_users FROM \"summary-events\""
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_time_spent_users"
+    ],
+    "controls": {
+      "key": "Average Time Spent Users",
+      "value": "avg_time_spent_users"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "numberOfActiveUsers": {
+    "chartName": "Total Active Users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(uid)) as active_user_count FROM \"summary-events\" WHERE __time>= TIMESTAMP '%StartDate%' and __time <= TIMESTAMP '%EndDate%'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "Total Active Users",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "activeUsers": {
+    "chartName": "Active Users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time,'%interval%') as \"Time\", count(distinct actor_id) active_users FROM \"telemetry-events-syncts\" where actor_type='User' and __time>= TIMESTAMP '%StartDate%' and __time <= TIMESTAMP '%EndDate%' group by TIME_FLOOR(__time,'%interval%')"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "P1M",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_users"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "active_users"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInAvgCompetenciesTaggedAcrossRoles": {
+    "chartName": "Average Competencies Tagged Across Roles",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select TIME_FLOOR(__time, 'PT1H') as \"Time\", edata_cb_object_org, edata_cb_data_wa_role_name, cast(count(mid) as DECIMAL)/ cast(count(DISTINCT(edata_cb_data_wa_userId)) as DECIMAL) as average_competency from \"cb-work-order-properties\" where edata_cb_data_wa_competency_type  = 'COMPETENCY' group by 1, 2,3  ORDER BY 1 ASC"
+      }
+    ],
+    "chartType": "metriccollection",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_competency"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "average_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "avgCompetenciesTaggedAcrossRoles": {
+    "chartName": "Total Activities Tagged",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org, edata_cb_data_wa_role_name, cast(count(mid) as DECIMAL)/ cast(count (DISTINCT(edata_cb_data_wa_userId)) as DECIMAL) as average_competeny from \"cb-work-order-properties\" where edata_cb_data_wa_competency_type  = 'COMPETENCY' group by 1, 2 ORDER BY average_competeny DESC "
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_competeny"
+    ],
+    "controls": {
+      "key": "edata_cb_data_wa_role_name",
+      "value": "average_competeny"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInAvgActivitiesTaggedAcrossRoles": {
+    "chartName": "Total Activities Tagged",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select TIME_FLOOR(__time, 'PT1H') as\"Time\", edata_cb_object_org, edata_cb_data_wa_role_name, cast(count(mid) as DECIMAL)/ cast(count(DISTINCT(edata_cb_data_wa_userId)) as DECIMAL) as average_activity from \"cb-work-order-properties\" where edata_cb_data_wa_competency_type  = 'COMPETENCY' group by 1, 2,3  ORDER BY 1 ASC"
+      }
+    ],
+    "chartType": "metriccollection",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_activity"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "average_activity"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "avgActivitiesTaggedAcrossRoles": {
+    "chartName": "Total Activities Tagged",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org, edata_cb_data_wa_role_name, cast(count(mid) as DECIMAL)/cast(count(DISTINCT(edata_cb_data_wa_userId)) as DECIMAL) as average_activity from \"cb-work-order-properties\" where edata_cb_data_wa_activity_type  = 'ACTIVITY' group by 1, 2 ORDER BY average_activity DESC"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_activity"
+    ],
+    "controls": {
+      "key": "edata_cb_data_wa_role_name",
+      "value": "average_activity"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "totalActivitiesTaggedToRoles": {
+    "chartName": "Total Activities Tagged",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select COUNT(mid) as total_activities from \"cb-work-order-properties\" where edata_cb_data_wa_activity_type  = 'ACTIVITY'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "total_activities"
+    ],
+    "controls": {
+      "key": "Total Activities Tagged",
+      "value": "total_activities"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInAvgRolesTaggedAcrossPositions": {
+    "chartName": "Average Roles Tagged Across Positions Trend",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select TIME_FLOOR(__time, 'PT1H') as \"Time\",edata_cb_object_org, edata_cb_data_wa_userPosition, CAST(COUNT(edata_cb_data_wa_role_name) as DECIMAL)/cast(count(distinct edata_cb_data_wa_userId) as DECIMAL) as average_role  from (select DISTINCT __time, edata_cb_object_org, edata_cb_data_wa_role_name,edata_cb_data_wa_userPosition, edata_cb_data_wa_userId from \"cb-work-order-properties\") group by 1, 2,3  ORDER BY 1 ASC"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_role"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "average_role"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "avgRolesTaggedAcrossPositions": {
+    "chartName": "Average number of roles tagged to officers, by position",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org, edata_cb_data_wa_userPosition, CAST(COUNT(edata_cb_data_wa_role_name) as DECIMAL)/cast(count(distinct edata_cb_data_wa_userId) as DECIMAL) as average_role from (select DISTINCT edata_cb_object_org, edata_cb_data_wa_role_name,edata_cb_data_wa_userPosition, edata_cb_data_wa_userId from \"cb-work-order-properties\") group by 1, 2 ORDER BY average_role DESC"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "average_role"
+    ],
+    "controls": {
+      "key": "edata_cb_data_wa_userPosition",
+      "value": "average_role"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "totalRolesTaggedToPositions": {
+    "chartName": "Total Roles Tagged",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select  COUNT(mid) as total_roles from \"cb-work-order-properties\" where edata_cb_data_wa_role_type  = 'ROLE'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "total_roles"
+    ],
+    "controls": {
+      "key": "Total Roles Tagged",
+      "value": "total_roles"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "numberOfPendingCompetencies": {
+    "chartName": "[CM4] Pending competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select count(edata_cb_object_id) as pending_competency from (SELECT edata_cb_object_org, edata_cb_object_id,edata_cb_object_type, COUNT(mid) as total_pending, LATEST(edata_state,20) as edata_state FROM \"cb-audit-events\" where  object_type = 'Competency'   GROUP BY 1,2,3) where edata_state = 'Unverified'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "pending_competency"
+    ],
+    "controls": {
+      "key": "[CM4] Pending competencies",
+      "value": "pending_competency"
+    },
+    "insight": {},
+    "_comment": "Number of competencies submitted and pending with the review board"
+  },
+  "numberOfApprovedCompetencies": {
+    "chartName": "[CM3] Approved competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select count(edata_cb_object_id) as Verified_competency from (SELECT edata_cb_object_org, edata_cb_object_id,edata_cb_object_type, COUNT(mid) as total_pending, LATEST(edata_state,20) as edata_state FROM \"cb-audit-events\" where  object_type = 'Competency'   GROUP BY 1,2,3) where edata_state = 'Verified'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Verified_competency"
+    ],
+    "controls": {
+      "key": "[CM3] Approved competencies",
+      "value": "Verified_competency"
+    },
+    "insight": {},
+    "_comment": "Number of competencies approved by review board"
+  },
+  "rankInCompetencyApprovalRate": {
+    "chartName": "[CM3.8] Competency approval rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_org, CAST(COUNT(CASE WHEN Status='Verified' THEN edata_cb_object_id END) AS FLOAT) / CAST(COUNT(edata_cb_object_id) AS FLOAT) AS approval_rate FROM ( SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid), LATEST(edata_state, 20) AS Status FROM \"cb-audit-events\" WHERE edata_cb_object_type='Competency' GROUP BY 1,2 ) GROUP BY edata_cb_object_org ORDER BY approval_rate DESC"
+      }
+    ],
+    "chartType": "metriccollection",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "approval_rate"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "approval_rate"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInNumberOfPendingCompetencies": {
+    "chartName": "[CM4.01] Number of pending competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time, 'P1M') AS \"Time\", COUNT(edata_cb_object_id) AS pending_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid),   LATEST(edata_state, 20) AS Status, MAX(__time) AS __time   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency'   GROUP BY 1,2 ) WHERE Status='Unverified' GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "pending_competency"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "pending_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInNumberOfRejectedCompetencies": {
+    "chartName": "[CM5.01] Number of competencies rejected",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time, 'P1M') AS \"Time\", COUNT(edata_cb_object_id) AS Rejected_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid),   LATEST(edata_state, 20) AS Status, MAX(__time) AS __time   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency'   GROUP BY 1,2 ) WHERE Status='Rejected' GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Rejected_competency"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "Rejected_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInNumberOfApprovedCompetencies": {
+    "chartName": "[CM3.01] Number of competencies approved",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time, 'P1M') AS \"Time\", COUNT(edata_cb_object_id) AS Verified_competency FROM (  SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid),   LATEST(edata_state, 20) AS Status,  MAX(__time) AS __time   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency'   GROUP BY 1,2 ) WHERE Status='Verified' GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Verified_competency"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "Verified_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInNumberOfSubmittedCompetencies": {
+    "chartName": "[CM2.01] Number of submitted competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time, 'P1M') AS \"Time\", COUNT(edata_cb_object_id) AS submitted_competency FROM (   SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid),   LATEST(edata_state, 20) AS Status, MAX(__time) AS __time   FROM \"cb-audit-events\"   WHERE edata_cb_object_type='Competency'   GROUP BY 1,2 ) GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "submitted_competency"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "submitted_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "changeInWorkAllocationApprovals": {
+    "chartName": "Work Allocation Approval Trend",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time, 'P1M') AS \"Time\", edata_cb_object_org, edata_cb_data_wa_userPosition, count(edata_cb_data_wa_userId) Approved_WO_orders FROM \"cb-work-order-officers\" where edata_state = 'Published' GROUP BY  1,edata_cb_object_org, edata_cb_data_wa_userPosition ORDER BY 1 ASC"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Approved_WO_orders"
+    ],
+    "controls": {
+      "key": "Time",
+      "value": "Approved_WO_orders"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "workOrderApprovalRate": {
+    "chartName": "Work Order Approval Rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_org, edata_cb_data_wa_userPosition, count(edata_cb_data_wa_userId) Approved_WO_orders FROM \"cb-work-order-officers\" where edata_state = 'Published'  GROUP BY edata_cb_object_org,edata_cb_data_wa_userPosition"
+      }
+    ],
+    "chartType": "bar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Approved_WO_orders"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "Approved_WO_orders"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "approvedWorkAllocationOrders": {
+    "chartName": "Approved Work Allocation Orders",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT edata_cb_object_org, edata_cb_data_wa_userPosition, count(edata_cb_data_wa_userId) Approved_WO_orders FROM \"cb-work-order-officers\" where edata_state = 'Published'  GROUP BY edata_cb_object_org,edata_cb_data_wa_userPosition"
+      }
+    ],
+    "chartType": "bar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Approved_WO_orders"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "Approved_WO_orders"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "rejectedCompetencies": {
+    "chartName": "[CM5.2] Number of competencies rejected",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org,count(edata_cb_object_id) as Rejected_competency from (SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid), LATEST(edata_state,20) as Status FROM \"cb-audit-events\"  where  edata_cb_object_type = 'Competency'   GROUP BY 1,2) where Status = 'Rejected' GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Rejected_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "Rejected_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "submittedCompetencies": {
+    "chartName": "[CM2.1] Number of submitted competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org,count(edata_cb_object_id) as submitted_competency from (SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid) , LATEST(edata_state,20) as Status FROM \"cb-audit-events\"  where  edata_cb_object_type = 'Competency'   GROUP BY 1,2)  GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "submitted_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "submitted_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "approvedCompetencies": {
+    "chartName": "[CM3.1] Number of competencies approved",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org,count(edata_cb_object_id) as Verified_competency from (SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid) , LATEST(edata_state,20) as Status FROM \"cb-audit-events\" where  edata_cb_object_type = 'Competency'   GROUP BY 1,2) where Status = 'Verified' GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "Verified_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "Verified_competency"
+    },
+    "insight": {},
+    "_comment": "Number of competencies approved by review board by MDO"
+  },
+  "pendingCompetencies": {
+    "chartName": "[CM4.1] Number of pending competencies",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "select edata_cb_object_org,count(edata_cb_object_id) as pending_competency from (SELECT edata_cb_object_org, edata_cb_object_id, COUNT(mid), LATEST(edata_state,20) as Status FROM \"cb-audit-events\" where  edata_cb_object_type = 'Competency'   GROUP BY 1,2) where Status = 'Unverified' GROUP BY 1"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "pending_competency"
+    ],
+    "controls": {
+      "key": "edata_cb_object_org",
+      "value": "pending_competency"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "loginRateByHub": {
+    "chartName": "[PE3.1] Login rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT hub, active_user_count, total_active_user_count, (100.0 * active_user_count / total_active_user_count) AS percent_active_user_count FROM ( SELECT hub, active_user_count, (SELECT COUNT(DISTINCT(actor_id)) FROM \"telemetry-events-syncts\" WHERE \"eid\"='IMPRESSION' AND context_hub <> 'other' AND __time >= CURRENT_TIMESTAMP - INTERVAL '6' MONTH) AS total_active_user_count FROM ( SELECT context_hub AS hub, COUNT(DISTINCT(actor_id)) AS active_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='IMPRESSION' AND context_hub <> 'other' AND __time >= CURRENT_TIMESTAMP - INTERVAL '6' MONTH GROUP BY 1 ) ) "
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "hub",
+      "value": "percent_active_user_count"
+    },
+    "insight": {},
+    "capitalize" : "firstCharacter", 
+    "_comment": "Percentage of registered MDO officials who have been active on different iGOT hubs in the last 30 days"
+  },
+  "userFlow": {
+    "chartName": "[PE6.2] User flow on iGOT in the last week",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT context_hub AS hub, COUNT(DISTINCT(actor_id)) AS active_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='IMPRESSION' AND context_hub <> 'other' AND __time >= CURRENT_TIMESTAMP - INTERVAL '6' MONTH GROUP BY 1 ORDER BY active_user_count DESC"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "hub",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Average number of users visiting different iGOT hubs in the previous calendar week (Mon-Sun)"
+  },
+  "avgSessionTime": {
+    "chartName": "[PE7] Average time spent on iGOT during each login",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT SUM(total_time_spent)/COUNT(uid) AS avg_session_time FROM \"summary-events\" WHERE \"dimensions_type\"='app' AND __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_session_time"
+    ],
+    "controls": {
+      "key": "[PE7] Average time spent on iGOT during each login",
+      "value": "avg_session_time"
+    },
+    "insight": {},
+    "_comment": "Average time spent on iGOT during each session in a day"
+  },
+  "avgUserTime": {
+    "chartName": "[PE8] Average time spent on iGOT by registered users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT SUM(total_time_spent)/COUNT(DISTINCT(uid)) AS avg_user_time FROM \"summary-events\" WHERE \"dimensions_type\"='app' AND __time >= CURRENT_TIMESTAMP - INTERVAL '12' MONTH"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "avg_user_time"
+    ],
+    "controls": {
+      "key": "[PE8] Average time spent on iGOT by registered users",
+      "value": "avg_user_time"
+    },
+    "insight": {},
+    "_comment": "Average time spent on iGOT by registered users in a day"
+  },
+  "vmdo104": {
+    "chartName": "1.04 Number of approved work allocation orders",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(edata_cb_data_wa_userId)) as approved_wao FROM \"cb-work-order-officers\" WHERE LOWER(edata_cb_data_status)='published' AND __time >= '$StartDate$' AND __time <= '$EndDate$' $mdo$ "
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "approved_wao"
+    ],
+    "controls": {
+      "key": "Approved Work Allocation Orders",
+      "value": "approved_wao"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vmdo107": {
+    "chartName": "[WA2.4] Average for MDOs: Work allocation order approval rate",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_data_deptId\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(edata_cb_data_wa_userId)) as approval_rate FROM \"cb-work-order-officers\" WHERE LOWER(edata_cb_data_status)='published' $mdo$"
+      },
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"edata_cb_object_org\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "ListOfAllItems",
+    "postAggregationTheory": "DRUID/REDIS",
+    "filter": "",
+    "aggregationPaths": [
+      "approval_rate",
+      "mdo_registered_officer_count"
+    ],
+    "controls": {
+      "key": "[WA2.4] Average for MDOs: Work allocation order approval rate",
+      "value": "approval_rate"
+    },
+    "insight": {},
+    "_comment": "The WAO approval rate averaged for all MDOs on iGOT"
+  },
+  "vspv104": {
+    "chartName": "[WA2] Approved work allocation orders",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"mdo\" : \"edata_cb_data_deptId\"}",
+        "dateRefField": "",
+        "indexName": "cb-work-order-properties",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(edata_cb_data_wa_userId)) as \"approved_work_orders\" FROM \"cb-work-order-properties\" WHERE LOWER(edata_cb_data_status)='published'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "approved_work_orders"
+    ],
+    "controls": {
+      "key": "[WA2] Approved work allocation orders",
+      "value": "approved_work_orders"
+    },
+    "insight": {},
+    "_comment": "Number of officers in MDO for whom a work order has been issued"
+  },
+  "vspvpe51": {
+    "chartName": "Users active in the last 7 days",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(actor_id)) as active_user_count FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' AND __time >= CURRENT_TIMESTAMP - INTERVAL '7' DAY"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "Users active in the last 7 days",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Number of users that logged in the last 7 days"
+  },
+  "vspv307": {
+    "chartName": "User flow on iGOT, by hub",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT context_hub AS hub, COUNT(DISTINCT(actor_id)) AS active_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\"='IMPRESSION' AND context_hub <> 'other' AND __time >= CURRENT_TIMESTAMP - INTERVAL '6' MONTH GROUP BY 1 ORDER BY active_user_count DESC"
+      }
+    ],
+    "chartType": "horizontalbar",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "hub",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Daily average of unique users over the period of last 7 days, grouped by hubs"
+  },
+  "v310": {
+    "chartName": "3.07 User flow on iGOT",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "telemetry-events-syncts",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT context_hub as hub, COUNT(DISTINCT(actor_id))/7 AS active_user_count FROM \"telemetry-events-syncts\" WHERE \"eid\" = 'IMPRESSION' AND __time >= CURRENT_TIMESTAMP - INTERVAL '7' DAY GROUP BY 1"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "hub",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": " "
+  },
+  "vspv301": {
+    "chartName": "Total MDOs",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_org_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_org_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total number of MDOs"
+  },
+  "vspv302": {
+    "chartName": "[PE2] MDOs onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "CountOfRecordsNonZero",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_registered_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total number of MDOs that have registered on iGOT"
+  },
+  "vspv303": {
+    "chartName": "[PE3] Total officers",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "hGetAll"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "Total number of officials that are part of the MDOs"
+  },
+  "vspv304": {
+    "chartName": "Officers onboarded",
+    "queries": [
+      {
+        "dataSource": "REDIS",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "mdo_total_registered_officer_count",
+        "esInstance": "PURPLE",
+        "aggrQuery": "GET"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "SumOfValues",
+    "filter": "",
+    "aggregationPaths": [
+      "mdo_total_registered_officer_count"
+    ],
+    "controls": null,
+    "insight": {},
+    "_comment": "The number of MDO officials who have registered on iGOT"
+  },
+  "vspvpe401": {
+    "chartName": "Officers onboarded, by week",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "cb-audit-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT TIME_FLOOR(__time + INTERVAL '05:30' HOUR TO MINUTE, 'P1W') as week_start, COUNT(DISTINCT(object_id)) as officer_count FROM \"telemetry-events-syncts\" WHERE eid='AUDIT' AND LOWER(edata_state)='create' AND LOWER(object_type)='user' AND __time >= CURRENT_TIMESTAMP - INTERVAL '3' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "officer_count"
+    ],
+    "controls": {
+      "key": "week_start",
+      "value": "officer_count"
+    },
+    "insight": {},
+    "_comment": "Trend in number of MDO officials registering on iGOT in 7-day periods, for last 3 months"
+  },
+  "vspvpe501": {
+    "chartName": "Active users",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"ts\" : \"ts\"}",
+        "dateRefField": "",
+        "indexName": "summary-events",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT DATE_TRUNC('week', __time + INTERVAL '05:30' HOUR TO MINUTE) as week_start, COUNT(DISTINCT(actor_id)) as active_user_count FROM \"telemetry-events-syncts\" WHERE eid='IMPRESSION' AND __time >= CURRENT_TIMESTAMP - INTERVAL '3' MONTH GROUP BY 1"
+      }
+    ],
+    "chartType": "line",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "active_user_count"
+    ],
+    "controls": {
+      "key": "week_start",
+      "value": "active_user_count"
+    },
+    "insight": {},
+    "_comment": "Trend in number of users logging on iGOT in 7-day periods, for last 3 months"
+  },
+  "vcbp992": {
+    "chartName": "Number of enrolments, by status",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"userOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT CASE WHEN dbCompletionStatus = 0 THEN 'Not started' WHEN dbCompletionStatus = 1 THEN 'In progress' WHEN dbCompletionStatus = 2 THEN 'Completed' END AS completionStatus, COUNT(userID) AS \"count\" FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\") GROUP BY 1"
+      }
+    ],
+    "chartType": "pie",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "count"
+    ],
+    "controls": {
+      "key": "completionStatus",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Number of users enrolled in courses by the CBP provider, by user status (not-started, in-progress or completed)"
+  },
+  "vcbp993": {
+    "chartName": "Total enrolments",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(userID) as TotalEnrolments FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "TotalEnrolments"
+    ],
+    "controls": {
+      "key": "Total enrolments",
+      "value": "TotalEnrolments"
+    },
+    "insight": {},
+    "_comment": "Total enrolments"
+  },
+  "vcbp994": {
+    "chartName": "Unique users enroled",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(DISTINCT(userID)) as UniqueUsersEnroled FROM \"dashboards-user-course-program-progress\" WHERE dbCompletionStatus IN (0, 1, 2) $mdo$ AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "UniqueUsersEnroled"
+    ],
+    "controls": {
+      "key": "Unique users enroled",
+      "value": "UniqueUsersEnroled"
+    },
+    "insight": {},
+    "_comment": "Unique users enroled"
+  },
+  "vcbp995": {
+    "chartName": "Course completion percentage",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT 100.0 * (SELECT COUNT(DISTINCT(userID)) FROM \"dashboards-user-course-program-progress\" WHERE courseStatus='Live' $mdo$ AND category='Course' AND dbCompletionStatus=2 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")) / (  SELECT COUNT(DISTINCT(userID)) FROM \"dashboards-user-course-program-progress\" WHERE courseStatus='Live' $mdo$ AND category='Course' AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")) as CourseCompletionPercentage"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "percentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CourseCompletionPercentage"
+    ],
+    "controls": {
+      "key": "Course completion percentage",
+      "value": "CourseCompletionPercentage"
+    },
+    "insight": {},
+    "_comment": "Percentage of users that complete the courses by the CBP provider vs users that enroll"
+  },
+  "vcbp996": {
+    "chartName": "Number of courses, by status",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT courseStatus, COUNT(courseID) as \"count\" FROM \"dashboards-course\" WHERE courseStatus IN ('Live', 'Draft', 'Review') $mdo$ AND category='Course' AND __time = (SELECT MAX(__time) FROM \"dashboards-course\") GROUP BY 1"
+      }
+    ],
+    "chartType": "bar",
+    "allowZero": true,
+    "resultType": "doc_count",
+    "isCumulative": false,
+    "interval": "day",
+    "alwaysView": "",
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "count"
+    ],
+    "controls": {
+      "key": "courseStatus",
+      "value": "count"
+    },
+    "insight": {},
+    "_comment": "Number of courses from CBP provider, by status (draft, review, under review, and live)"
+  },
+  "vcbp997": {
+    "chartName": "Reviewed but not published",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-course",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT COUNT(courseID) as ReviewedNotPublished FROM \"dashboards-course\" WHERE __time = (SELECT MAX(__time) FROM \"dashboards-course\") $mdo$ AND courseStatus='Review' AND courseReviewStatus='Reviewed' AND category='Course'"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "number",
+    "isDecimal": false,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "ReviewedNotPublished"
+    ],
+    "controls": {
+      "key": "Reviewed but not published",
+      "value": "ReviewedNotPublished"
+    },
+    "insight": {},
+    "_comment": "Reviewed but not published"
+  },
+  "vcbp998": {
+    "chartName": "Course enrolment percentage",
+    "queries": [
+      {
+        "dataSource": "DRUID",
+        "module": "COMMON",
+        "requestQueryMap": "{\"mdo\" : \"courseOrgID\", \"mdo2\" : \"context_channel\"}",
+        "dateRefField": "",
+        "indexName": "dashboards-user-course-program-progress",
+        "esInstance": "PURPLE",
+        "aggrQuery": "SELECT 100.0 * (SELECT COUNT(DISTINCT(userID)) FROM \"dashboards-user-course-program-progress\" WHERE courseStatus='Live' $mdo$ AND category='Course' AND dbCompletionStatus=0 AND __time = (SELECT MAX(__time) FROM \"dashboards-user-course-program-progress\")) / (  SELECT COUNT(DISTINCT(actor_id))   FROM \"telemetry-events-syncts\"   WHERE eid='IMPRESSION' AND object_type='Course' AND actor_type='User' $mdo2$ ) as CourseEnrolmentPercentage"
+      }
+    ],
+    "chartType": "metric",
+    "allowZero": true,
+    "valueType": "percentage",
+    "isDecimal": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "filter": "",
+    "aggregationPaths": [
+      "CourseEnrolmentPercentage"
+    ],
+    "controls": {
+      "key": "Course enrolment percentage",
+      "value": "CourseEnrolmentPercentage"
+    },
+    "insight": {},
+    "_comment": "Percentage of users that enroll for courses by the CBP provider vs users that visit the course page"
+  },
+  "combo1" : { 
+	"chartType" : "combination",
+	"prime" : "voverview0071",
+  	"innerWidget" : ["ceo2"]
+  },
+  "combo2" : { 
+	"chartType" : "combination",
+	"prime" : "ceo78910",
+  	"innerWidget" : ["ceo78910a"]
+  },
+  "combo3" : { 
+	"chartType" : "combination",
+	"prime" : "vmdo107",
+  	"innerWidget" : ["vmdo107"]
+  },
+  "combo4" : { 
+	"chartType" : "combination",
+	"prime" : "ceo11a11b121314",
+  	"innerWidget" : ["ceo11a11b121314a"]
+  },
+  "combo5" : { 
+	"chartType" : "combination",
+	"prime" : "ceo19a19b",
+  	"innerWidget" : ["ceo19a19ba"]
+  },
+  "combo6" : { 
+	"chartType" : "combination",
+	"prime" : "vmdo303",
+  	"innerWidget" : ["vmdo304"]
+  },
+  "combo7" : { 
+	"chartType" : "combination",
+	"prime" : "voff03",
+  	"innerWidget" : ["voff13"]
+  },
+  "combo8" : { 
+	"chartType" : "combination",
+	"prime" : "voverview101",
+  	"innerWidget" : ["voverview102", "voverview103"]
+  },
+  "combo9" : { 
+	"chartType" : "combination",
+	"prime" : "voverviewcp601",
+  	"innerWidget" : ["voverviewcp61"]
+  },
+  "combo10" : { 
+	"chartType" : "combination",
+	"prime" : "voverviewpe152",
+  	"innerWidget" : ["voverviewpe15b"]
+  },
+  "combo11" : { 
+	"chartType" : "combination",
+	"prime" : "vcbp992",
+  	"innerWidget" : ["vcbp993","vcbp994"]
+  },
+  "combo12" : { 
+	"chartType" : "combination",
+	"prime" : "vcbp996",
+  	"innerWidget" : ["vcbp997"]
+  }
+}

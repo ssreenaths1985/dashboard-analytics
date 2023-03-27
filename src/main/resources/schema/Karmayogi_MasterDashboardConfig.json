@@ -1,0 +1,2191 @@
+{
+  "_comment": "Master dashboard which holds all the possible visualisation. Note new dashboards/visualisations can be added",
+  "dashboards": [
+    {
+      "name": "Overview",
+      "id": "overview",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "false",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "voverviewcp6",
+          "name": "Live courses on iGOT",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ],
+          "group": "violet"
+        },
+        {
+          "id": "voverviewpe1",
+          "name": "MDOs onboarded",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ],
+          "group": "violet"
+        },
+        {
+          "id": "voverviewpe2",
+          "name": "Number of users onboarded",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ],
+          "group": "violet"
+        },
+        {
+          "id": "voverviewpe15",
+          "name": "Number of course completions",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": [
+
+          ],
+          "group": "violet"
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Top 10 MDOs, by live courses",
+              "description": "Top 10 MDOs, by number of currently live courses",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "voverviewcp63",
+                  "name": "Top 10 MDOs, by live courses",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 43,
+              "name": "Top 10 MDOs, by users onboarded",
+              "description": "Top 10 MDOs, by number of users onboarded",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "voverviewpe21",
+                  "name": "Top 10 MDOs, by users onboarded",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 21,
+              "name": "Top 10 MDOs, by course completions",
+              "description": "Top 10 MDOs, by number of course completions by it's officials",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo10",
+                  "name": "Top 10 MDOs, by course completions",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "name": "Number of course completions, by month",
+              "description": "Monthly trend in the total number of courses completions, for last year",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "voverviewpe1501",
+                  "name": "Number of course completions, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Number of courses added, by month",
+              "description": "Monthly trend in the number of courses published on iGOT, for last year",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo9",
+                  "name": "Number of courses added, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "name": "Users onboarded, by month",
+              "description": "Monthly trend in the number of users registered ",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "combo8",
+                  "name": "Users onboarded, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 43,
+              "name": "Percentage of users onboarded, by MDO",
+              "description": "Percentage of users onboarded, by MDO",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "voverview006a",
+                  "name": "Percentage of users onboarded, by MDO",
+                  "code": "",
+                  "chartType": "pie",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WAT Dashboards",
+      "id": "watdashboards",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "totalRolesTaggedToPositions",
+          "name": "Total Roles Tagged to Positions",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "totalActivitiesTaggedToRoles",
+          "name": "Total Activities Tagged to Roles",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Approved Work Allocation Orders",
+              "description": "Number of officers for which a work order has been approved",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "approvedWorkAllocationOrders",
+                  "name": "Approved Work Allocation Orders",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 43,
+              "name": "Work Order Approval Trends",
+              "description": "Absolute change in the number of officers for whom a work order has been approved and issued",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInWorkAllocationApprovals",
+                  "name": "Work Order Approval Trends",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 21,
+              "name": "Average number of roles tagged to officers, by position",
+              "description": "Average number of roles tagged to officers in each position",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "avgRolesTaggedAcrossPositions",
+                  "name": "Average number of roles tagged to officers, by position",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "name": "Change in average number of roles tagged to officers by position",
+              "description": "Change in average number of roles tagged to officers in each position",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInAvgRolesTaggedAcrossPositions",
+                  "name": "Change in average number of roles tagged to officers by position",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Average number of activities tagged per role",
+              "description": "Average number of activities tagged per role for officers on iGOT ",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "avgActivitiesTaggedAcrossRoles",
+                  "name": "Average number of activities tagged per role",
+                  "code": "",
+                  "chartType": "metriccollection",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "name": "Change in average activities tagged per role",
+              "description": "Change in the average activities tagged per role for officers on iGOT with respect to the previous day",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInAvgActivitiesTaggedAcrossRoles",
+                  "name": "Change in average activities tagged per role",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Average number of competencies tagged per role",
+              "description": "Total number of competencies tagged per role on iGOT",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "avgCompetenciesTaggedAcrossRoles",
+                  "name": "Average number of competencies tagged per role",
+                  "code": "",
+                  "chartType": "metriccollection",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "name": "Competencies Tagged Across Roles Trends",
+              "description": "Change in Total average competencies per roles in positions on iGOT for which a work allocation order has been approved and issued",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInAvgCompetenciesTaggedAcrossRoles",
+                  "name": "Competencies Tagged Across Roles Trends",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 41,
+              "name": "[WA7.3] Average number of competencies tagged per role, by type",
+              "description": "Total number of competencies tagged per role on iGOT, for each type",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "comptenciesTaggedPerRolePosition",
+                  "name": "[WA7.3] Average number of competencies tagged per role, by type",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competencies Dashboards",
+      "id": "competencies",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "numberOfApprovedCompetencies",
+          "name": "[CM3] Approved competencies",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "numberOfPendingCompetencies",
+          "name": "[CM4] Pending competencies",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 21,
+              "name": "[CM3.1] Approved competencies, by MDO",
+              "description": "Number of competencies approved by review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "approvedCompetencies",
+                  "name": "[CM3.1] Approved competencies, by MDO",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "name": "[CM3.01] Approved competencies, by month",
+              "description": "Monthly trend in the number of competencies approved by review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "changeInNumberOfApprovedCompetencies",
+                  "name": "[CM3.01] Approved competencies, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 22,
+              "name": "[CM5.2] Rejected competencies, by MDO",
+              "description": "Number of competencies from each MDO rejected by the review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "rejectedCompetencies",
+                  "name": "[CM5.2] Rejected competencies, by MDO",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "name": "[CM5.01] Rejected competencies, by month",
+              "description": "Monthly trend in the number of competencies rejected by the review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInNumberOfRejectedCompetencies",
+                  "name": "[CM5.01] Rejected competencies, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "Visualization Row 4",
+          "vizArray": [
+            {
+              "id": 23,
+              "name": "[CM4.1] Pending competencies, by MDO",
+              "description": "Number of competencies submitted by each MDO that are pending with the review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "pendingCompetencies",
+                  "name": "[CM4.1] Pending competencies, by MDO",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 33,
+              "name": "[CM4.01] Pending competencies, by month",
+              "description": "Monthly trend in the number of competencies submitted and pending with the review board ",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInNumberOfPendingCompetencies",
+                  "name": "[CM4.01] Pending competencies, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "Visualization Row 5",
+          "vizArray": [
+            {
+              "id": 41,
+              "name": "[CM2.1] Submitted competencies, by MDO",
+              "description": "Number of competencies submitted to review board, for each MDO",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "submittedCompetencies",
+                  "name": "[CM2.1] Submitted competencies, by MDO",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 42,
+              "name": "[CM2.01] Submitted competencies, by month",
+              "description": "Monthly trend in the number of competencies submitted to review board",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "changeInNumberOfSubmittedCompetencies",
+                  "name": "[CM2.01] Submitted competencies, by month",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "Visualization Row 6",
+          "vizArray": [
+            {
+              "id": 41,
+              "name": "[CM2.2] Submitted competencies, by type",
+              "description": "Number of competencies of each type submitted to review board",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "comptenciesSubmittedByType",
+                  "name": "[CM2.2] Submitted competencies, by type",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 42,
+              "name": "[CM3.2] Approved competencies, by type",
+              "description": "Number of approved competencies of each type ",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "comptenciesVerifiedByType",
+                  "name": "[CM3.2] Approved competencies, by type",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "[CM5.4] Rejected competencies, by type",
+              "description": "Number of competencies of each type rejected by the review board",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "comptenciesRejectedByType",
+                  "name": "[CM5.4] Rejected competencies, by type",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "Visualization Row 6",
+          "vizArray": [
+            {
+              "id": 41,
+              "name": "[CM3.7] Competency approval rate, by type",
+              "description": "Average percentage of competencies of each type that have been approved by the review board.",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "comptenciesApprovalRateByType",
+                  "name": "[CM3.7] Competency approval rate, by type",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "[CM3.8] MDO rank in terms of competency approval rate",
+              "description": "Rank of MDOs with respect to percentage of competencies approved by the review board",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "charts": [
+                {
+                  "id": "rankInCompetencyApprovalRate",
+                  "name": "[CM3.8] MDO rank in terms of competency approval rate",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "User Engagement",
+      "id": "userengagement",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "avgTimeSpentOnEachLomdogin",
+          "name": "Average Time Spent during Each Login (in secs)",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "registrationRate",
+          "name": "Registration Rate",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "avgSessionTime",
+          "name": "[PE7] Average time spent on iGOT during each login",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "avgUserTime",
+          "name": "[PE8] Average time spent on iGOT by registered users",
+          "code": "",
+          "chartType": "metric",
+          "order": 5,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "[PE4.51] Active users, by week",
+              "description": "Weekly trend in the number of unique users that interact with iGOT (in 7-day time periods)",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "numberOfWeeklyActiveUsers",
+                  "name": "[PE4.51] Active users, by week",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "[PE9.01] Average time spent on iGOT by daily active users, by week",
+              "description": "Weekly trend in the average time spent on iGOT by daily active users",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "timeSpentByDailyActiveUsers",
+                  "name": "[PE9.01] Average time spent on iGOT by daily active users, by week",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "[PE7.01] Average time spent on iGOT during each login, by week",
+              "description": "Weekly trend in the average time spent on iGOT during each login ",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "timeSpentOnEachLogin",
+                  "name": "[PE7.01] Average time spent on iGOT during each login, by week",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "name": "[PE6.2] User flow on iGOT in the last week, by hubs",
+              "description": "Average number of users visiting different iGOT hubs in the previous calendar week (Mon-Sun)",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userFlow",
+                  "name": "[PE6.2] User flow on iGOT in the last week, by hubs",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "[PE3.1] Login rate, by hub",
+              "description": "Percentage of registered MDO officials who have been active on different iGOT hubs in the last 30 days",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "loginRateByHub",
+                  "name": "[PE3.1] Login rate, by hub",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MDO Dashboard",
+      "id": "mdodashboard",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "false",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "vmdope1",
+          "name": "Number of registered users in my MDO",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vmdope22",
+          "name": "Number of users active in last week",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vmdope24",
+          "name": "Percentage of users active in the last week",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Top 10 performers in my MDO, by number of courses completed",
+              "description": "Top 10 performers in my MDO, based on the number of courses they have completed",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vmdo991",
+                  "name": "Top 10 performers in my MDO, by number of courses completed",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Top 10 courses, by number of completions by users in my MDO",
+              "description": "Top 10 courses accross the platform, by number of completions by users in my MDO",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vmdo992",
+                  "name": "Top 10 courses, by number of completions by users in my MDO",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Trend in daily average time spent by a user (in minutes)",
+              "description": "Trend in daily average time spent by a user, for last 3 months",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vmdope3",
+                  "name": "Trend in daily average time spent by a user (in minutes)",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Trend in number of weekly active users",
+              "description": "Trend in number of MDO officials logging in 7-day time periods, for last 3 months",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vmdope2",
+                  "name": "Trend in number of weekly active users",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Roles in my MDO",
+              "description": "Numbers of MDO officials belonging to each of the roles ",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vmdo993",
+                  "name": "Roles in my MDO",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Number of enrolments, by status",
+              "description": "Number of users enrolled in courses by the CBP provider, by user status, i.e. not-started, in-progress or completed",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo11",
+                  "name": "Number of enrolments, by status",
+                  "code": "",
+                  "chartType": "pie",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SPV Dashboard",
+      "id": "spvdashboard",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "false",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "vspv301",
+          "name": "Total MDOs",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vspv304",
+          "name": "Officers onboarded",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vspvpe51",
+          "name": "Users active in the last 7 days",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 12,
+              "name": "Officers onboarded, by week",
+              "description": "Trend in number of MDO officials registering on iGOT in 7-day periods, for last 3 months",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspvpe401",
+                  "name": "Officers onboarded, by week",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Active users, by week",
+              "description": "Trend in number of users logging on iGOT in 7-day periods, for last 3 months",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspvpe501",
+                  "name": "Active users, by week",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "User flow on iGOT, by hub",
+              "description": "Daily average of unique users over the period of last 7 days, grouped by hubs",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspv307",
+                  "name": "User flow on iGOT, by hub",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Top 10 courses, by user ratings",
+              "description": "Top 10 courses across the platform, by average user rating",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspvcp1",
+                  "name": "Top 10 courses, by user ratings",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 12,
+              "name": "Top 10 courses, by course completions",
+              "description": "Top 10 courses across the platform, by number of users that completed the course",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspv991",
+                  "name": "Top 10 courses, by course completions",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Top 10 MDOs, by course completions",
+              "description": "Top 10 MDOs, by number of course completions by it's officials",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vspv992",
+                  "name": "Top 10 MDOs, by course completions", 
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CBP Dashboard",
+      "id": "cbpdashboard",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "vcbpcp1",
+          "name": "Number of courses on iGOT platform",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vcbpcp2",
+          "name": "Average rating across all courses by the CBP provider",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vcbp991",
+          "name": "Number of courses by the CBP provider",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Top 10 courses, by average user rating",
+              "description": "Top 10 courses by the CBP provider, by average user rating",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vcbpcp6",
+                  "name": "Top 10 courses, by average user rating",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "Top 10 courses, by number of visits",
+              "description": "Top 10 courses by the CBP provider, by total number of officers who visited the course page",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vcbpcp3",
+                  "name": "Top 10 courses, by number of visits",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "Visualization Row 2",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Top 10 courses, by number of enrolments",
+              "description": "Top 10 courses by the CBP provider, by number of officers who enrolled for the course",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vcbpcp4",
+                  "name": "Top 10 courses, by number of enrolments",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Top 10 courses, by number of completions",
+              "description": "Top 10 courses by the CBP provider, by number of officers who completed the course",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vcbpcp5",
+                  "name": "Top 10 courses, by number of completions",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Number of enrolments, by status",
+              "description": "Number of users enrolled in courses by the CBP provider, by user status, i.e. not-started, in-progress or completed",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo11",
+                  "name": "Number of enrolments, by status",
+                  "code": "",
+                  "chartType": "pie",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Number of courses, by status",
+              "description": "Number of courses from CBP provider, by status (draft, review, under review, and live)",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo12",
+                  "name": "Number of courses, by status",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Officer Dashboard",
+      "id": "officerdashboard",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "voff01",
+          "name": "[CM1] Total competencies required for your current position",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff02",
+          "name": "[CM2] Competencies self-declared on iGOT",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff03",
+          "name": "[CM2.1] Competency self-declaration rate",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff04",
+          "name": "[CM2.11] Average competency self-declaration rate for officers in their MDO",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff05",
+          "name": "[CM3] Total competency gaps identified",
+          "code": "",
+          "chartType": "metric",
+          "order": 5,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff06",
+          "name": "[PE1] Total number of courses currently enrolled in",
+          "code": "",
+          "chartType": "metric",
+          "order": 6,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff08",
+          "name": "[CM3.1] Percentage of competency gaps for which course is enrolled",
+          "code": "",
+          "chartType": "metric",
+          "order": 8,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff09",
+          "name": "[CM3.11] Average percentage of competency gaps for which courses are enrolled in - for an officer in their MDO",
+          "code": "",
+          "chartType": "metric",
+          "order": 9,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff10",
+          "name": "[PE2] Total number of courses completed",
+          "code": "",
+          "chartType": "metric",
+          "order": 10,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff12",
+          "name": "[CM4.1] Percentage of competency gaps closed",
+          "code": "",
+          "chartType": "metric",
+          "order": 12,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff13",
+          "name": "[CM4.11] Average percentage of identified competency gaps closed for officers in their MDO",
+          "code": "",
+          "chartType": "metric",
+          "order": 13,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "voff12a",
+          "name": "[CM4] Competency gaps closed",
+          "code": "",
+          "chartType": "metric",
+          "order": 14,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Course Analytics",
+      "id": "courseanalytics",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "true",
+      "showWidgetTitle": "true",
+      "filters": [
+
+      ],
+      "widgetCharts": [
+        {
+          "id": "vca01",
+          "name": "Number of learners on the platform",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vca02",
+          "name": "Number of learners who have enrolled into the course",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vca03",
+          "name": "Number of learners who have completed the course",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "vca04",
+          "name": "How many left the course in between",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": [
+
+          ]
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Number of learners on different stages of course completion",
+              "description": "For the selected course, user will be able to view the number of officers and their current progress in course completion",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "vca05",
+                  "name": "Number of learners on different stages of course completion",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CEO Dashboards",
+      "id": "ceodashboards",
+      "isActive": "",
+      "style": "linear",
+      "widgetTitle": "At a glance",
+      "showFilters": "true",
+      "showWidgets": "true",
+      "showDateFilter": "false",
+      "showWidgetTitle": "true",
+      "filters": [
+      ],
+      "widgetCharts": [
+        {
+          "id": "ceo2",
+          "name": "Total no of MDO Admins",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": [
+          ]
+        },
+        {
+          "id": "ceo3",
+          "name": "No of organization with atleast one MDO Admin",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": [
+          ]
+        },
+        {
+          "id": "ceo16",
+          "name": "Total no of organizations with published courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 3,
+          "filter": "",
+          "headers": [
+          ]
+        },
+        {
+          "id": "ceo1",
+          "name": "Total no of organizations onboarded",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": [
+          ]
+        },
+        {
+          "id": "ceo5",
+          "name": "Total no of users created",
+          "code": "",
+          "chartType": "metric",
+          "order": 5,
+          "filter": "",
+          "headers": [
+          ]
+        },
+        {
+          "id": "ceo20",
+          "name": "Available content time in hrs",
+          "code": "",
+          "chartType": "metric",
+          "order": 6,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "ceo11",
+          "name": "Total no of users enrolled for courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 7,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "ceo14",
+          "name": "Total no of users enrolled and completed",
+          "code": "",
+          "chartType": "metric",
+          "order": 8,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "ceo13",
+          "name": "Total no of users enrolled and in progress",
+          "code": "",
+          "chartType": "metric",
+          "order": 9,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "ceo12",
+          "name": "Total no of users enrolled but not started",
+          "code": "",
+          "chartType": "metric",
+          "order": 10,
+          "filter": "",
+          "headers": [
+
+          ]
+        },
+        {
+          "id": "ceo18",
+          "name": "Total no of courses 100% consumed by atleast one user",
+          "code": "",
+          "chartType": "metric",
+          "order": 11,
+          "filter": "",
+          "headers": [
+
+          ]
+        } 
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 1",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Number of courses, by status",
+              "description": "Count of courses and the status wise distinction of courses",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo2",
+                  "name": "Number of courses, by status",
+                  "code": "",
+                  "chartType": "horizontalbar",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Number of enrolments, by status",
+              "description": "Count of users enroled, unique users along with the distinction of enrolment status",
+              "dimensions": {
+                "height": 250,
+                "width": 6
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "combo4",
+                  "name": "Number of enrolments, by status",
+                  "code": "",
+                  "chartType": "pie",
+                  "filter": "",
+                  "headers": [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

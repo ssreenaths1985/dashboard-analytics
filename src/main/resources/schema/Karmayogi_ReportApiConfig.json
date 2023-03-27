@@ -1,0 +1,32 @@
+{
+  "userTypeCount": {
+    "chartName": "User Type Count",
+    "queries": [
+      {
+        "module": "COMMON",
+        "requestQueryMap": "{\r\n  \"state\" : \"stateName.keyword\", \n\"profession\" : \"userEnrich.Profession.keyword\", \n\"courseName\" : \"courseName.keyword\"}",
+        "dateRefField": "Enrolment DateMs",
+        "indexName": "usercoursecompletion",
+        "esInstance" : "TERNARY",
+        "aggrQuery": "{\"aggs\":{\"top_tags\":{\"terms\":{\"field\":\"userEnrich.Profession.keyword\",\"size\":40},\"aggs\":{\"User Type Report\":{\"top_hits\":{\"sort\":[{\"Enrolment DateMs\":{\"order\":\"desc\"}}],\"size\":100}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "KeyProjects", "column": "KeyProjects"}
+    ],
+    "chartType": "report",
+    "valueType": "number",
+    "drillChart": "",
+    "action": "",
+    "filter": "",
+    "plotLabel": "KeyProjects",
+    "isPostResponseHandler": true,
+    "postAggregationTheory" : "",
+    "aggregationPaths": [
+      "User Type Report"
+    ],
+    "insight": {
+    },
+    "_comment": ""
+  }
+}

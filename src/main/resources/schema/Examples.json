@@ -1,0 +1,3288 @@
+{
+	"timeSharePerBU": {
+		"chartName": "Time Share Per Business Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}}]}},\"aggs\":{\"Time Share Per BU\":{\"terms\":{\"field\":\"bu.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"ts\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Time Share Per BU"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"buTimeEntries": {
+		"chartName": "Time Entries Per Business Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"GeneralAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}}]}},\"aggs\":{\"Business Unit Time Entries\":{\"terms\":{\"field\":\"bu.keyword\",\"size\":10},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"ts\"}}}}}}}}"
+			}
+		],
+		"chartType": "polararea",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Business Unit Time Entries"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"leaveSharePerBu": {
+		"chartName": "Leave Share Per Business Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"Leave Share Per BU\":{\"terms\":{\"field\":\"bu.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"ts\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Leave Share Per BU"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetActualRevenueTrend": {
+		"chartName": "Revenue Trends Actual VS Target",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\"aggs\":{\"Target Revenue\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"Target Rev\"}}}},\"Actual Revenue\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"Actual/Forecast Rev\"}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Target Revenue",
+			"Actual Revenue"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "monthwise",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetActualGm3Trend": {
+		"chartName": "GM3 Trends Actual VS Target",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\"aggs\":{\"Target GM3\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"Target GM3\"}}}},\"Actual GM3\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"Actual GM3\"}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Target GM3",
+			"Actual GM3"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "monthwise",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"leaveHoursByType": {
+		"chartName": "Leave Hours By Type",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"Leave Hours By Type\":{\"terms\":{\"field\":\"tskname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"ts\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "polararea",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Leave Hours By Type"
+		],
+		"isCumulative": false,
+		"interval": "day",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"leaveHoursByType2": {
+		"chartName": "Leave Hours By Type",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"Leave Hours By Type\":{\"terms\":{\"field\":\"tskname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"ts\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "treemap",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Leave Hours By Type"
+		],
+		"isCumulative": false,
+		"interval": "day",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetActualGm3": {
+		"chartName": "GM3 Actual VS Target",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\"aggs\":{\"ActualGM3\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"ActualGM3\":{\"sum\":{\"field\":\"Actual GM3\"}}}},\"TargetGM3\":{\"date_histogram\":{\"field\":\"AsOnMonth\",\"interval\":\"month\"},\"aggs\":{\"TargetGM3\":{\"sum\":{\"field\":\"Target GM3\"}}}}}}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"ActualGM3",
+			"TargetGM3"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"averageRating": {
+		"chartName": "Average Rating",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "serverDateTime",
+				"indexName": "pontus_app_feedback",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Average Rating\":{\"avg\":{\"field\":\"value\"}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Average Rating"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"nonProjectHours": {
+		"chartName": "Non Project Hours Insights",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"GeneralAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"General \"}}]}},\"aggs\":{\"General Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"BenchAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"General \"}},{\"term\":{\"tskname.keyword\":\"Bench\"}}]}},\"aggs\":{\"Bench Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"LeaveAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"Leave Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"TrainingAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Training\"}}]}},\"aggs\":{\"Training Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"RecruitmentAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Recruitment\"}}]}},\"aggs\":{\"Recruitment Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metriccollection",
+		"valueType": "hours",
+		"isDecimal": false,
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "metricgroup",
+		"aggregationPaths": [
+			"General Hours",
+			"Bench Hours",
+			"Leave Hours",
+			"Training Hours",
+			"Recruitment Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalLeaveHours": {
+		"chartName": "Leave Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"Leave Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Leave Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalHoursLogged": {
+		"chartName": "Total Hours Logged",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}}]}},\"aggs\":{\"Total Hours Logged\":{\"sum\":{\"field\":\"ts\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Hours Logged"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalTrainingHours": {
+		"chartName": "Training Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Training\"}}]}},\"aggs\":{\"Training Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Training Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalGeneralHours": {
+		"chartName": "General Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"General \"}}]}},\"aggs\":{\"General Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"General Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalBenchHours": {
+		"chartName": "Total Bench Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"General \"}},{\"term\":{\"tskname.keyword\":\"Bench\"}}]}},\"aggs\":{\"Bench Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Bench Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalRecruitmentHours": {
+		"chartName": "Recruitment Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Recruitment\"}}]}},\"aggs\":{\"Recruitment Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Recruitment Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalProjectHours": {
+		"chartName": "Project Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"prjname.keyword\":[\"General\",\"Leave\",\"Training\",\"Recruitment\"]}}],\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}}]}},\"aggs\":{\"Project Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Project Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalAccountsCount": {
+		"chartName": "Total Accounts",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Total Accounts\": {\r\n      \"sum\": {\r\n        \"field\": \"Accounts\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Accounts"
+		],
+		"alwaysView": "monthwise",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalProjectsCount": {
+		"chartName": "Total Projects",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Total Projects\": {\r\n      \"sum\": {\r\n        \"field\": \"Projects\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Projects"
+		],
+		"alwaysView": "monthwise",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalPeopleCount": {
+		"chartName": "People Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"People Count\": {\r\n      \"sum\": {\r\n        \"field\": \"People\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"People Count"
+		],
+		"alwaysView": "monthwise",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"focusHoursForBU": {
+		"chartName": "Focus Hours for Business Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}}]}},\"aggs\":{\"KeyProjectsFilter\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"prjname.keyword\":[\"Leave\",\"Training\",\"General\",\"Recruitment\"]}}]}},\"aggs\":{\"KeyProjects\":{\"terms\":{\"field\":\"prjname.keyword\",\"size\":10},\"aggs\":{\"Digital\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Digital\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"NXT\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"NXT\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"MS Enterprise\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"MS Enterprise\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"General\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"General\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"Enterprise\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Enterprise\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"Sweden\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Sweden\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"Sweden - Direct\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Sweden - Direct\"}}]}},\"aggs\":{\"sumvalue\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}}}}}"
+			}
+		],
+		"filterKeys": [
+			{
+				"key": "KeyProjects",
+				"column": "KeyProjects"
+			}
+		],
+		"chartType": "table",
+		"valueType": "number",
+		"drillChart": "",
+		"action": "",
+		"filter": "",
+		"plotLabel": "KeyProjects",
+		"isPostResponseHandler": true,
+		"postAggregationTheory": "",
+		"aggregationPaths": [
+			"Digital",
+			"MS Enterprise",
+			"General",
+			"NXT",
+			"Enterprise",
+			"Sweden",
+			"Sweden - Direct"
+		],
+		"pathDataTypeMapping": [
+			{
+				"Digital": "number"
+			},
+			{
+				"MS Enterprise": "number"
+			},
+			{
+				"General": "number"
+			},
+			{
+				"NXT": "number"
+			},
+			{
+				"Enterprise": "number"
+			},
+			{
+				"Sweden": "number"
+			},
+			{
+				"Sweden - Direct": "number"
+			}
+		],
+		"insight": {
+			
+		},
+		"_comment": ""
+	},
+	"totalInterviewsCount": {
+		"chartName": "Total Interviews Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Total Interviews Count\":{\"value_count\":{\"field\":\"interviewDateInMs\"}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Interviews Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalInterviewersCount": {
+		"chartName": "Total Interviewers Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Total Interviewers Count\":{\"cardinality\":{\"field\":\"interviewerName.keyword\",\"precision_threshold\":100}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Interviewers Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalCandidatesCount": {
+		"chartName": "Total Candidates Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Total Candidates Count\":{\"cardinality\":{\"field\":\"candidateId\",\"precision_threshold\":100}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Candidates Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalPositions": {
+		"chartName": "Total Positions Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Total Positions Count\":{\"cardinality\":{\"field\":\"position.keyword\",\"precision_threshold\":100}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Positions Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"interviewsForPositions": {
+		"chartName": "Interviews For Positions",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Interviews For Positions\":{\"terms\":{\"field\":\"position.keyword\",\"size\":100}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Interviews For Positions"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5Interviewers": {
+		"chartName": "Top 5 Interviewers",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Top 5 Interviewers\":{\"terms\":{\"field\":\"interviewerName.keyword\",\"size\":5}}}}"
+			}
+		],
+		"chartType": "donut",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 5 Interviewers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"interviewsTypeCount": {
+		"chartName": "Interviews Type Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Interview Type Count\":{\"terms\":{\"field\":\"type.keyword\",\"size\":10}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Interview Type Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"interviewOrganizersCount": {
+		"chartName": "Interview Organizers Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Interview Organizers Count\":{\"terms\":{\"field\":\"scheduledBy.keyword\",\"size\":10}}}}"
+			}
+		],
+		"chartType": "polararea",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Interview Organizers Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"interviewTrendPerBu": {
+		"chartName": "Interview Trend Per BU",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"MS Enterprise\":{\"date_histogram\":{\"field\":\"interviewDateInMs\",\"interval\":\"week\"},\"aggs\":{\"MS Enterprise\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"position.keyword\":[\"Sharepoint\",\"MS Dynamic AX Technical\",\"MS Dynamic AX Functional\",\"MS Dynamic CRM\",\"AX Finance\",\"AX T&L\",\"Power BI\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"interviewDateInMs\",\"precision_threshold\":100}}}}}},\"SAP\":{\"date_histogram\":{\"field\":\"interviewDateInMs\",\"interval\":\"week\"},\"aggs\":{\"positions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"position.keyword\":[\"SAP EWM\",\"SAP Basis\",\"SAP PI PO CPI\",\"SAP CPI\",\"SAP IS Retail\",\"SAP PM MM QM\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"interviewDateInMs\",\"precision_threshold\":100}}}}}},\"Digital\":{\"date_histogram\":{\"field\":\"interviewDateInMs\",\"interval\":\"week\"},\"aggs\":{\"positions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"position.keyword\":[\"Java\",\"Java Architect\",\"Dot Net Lead\",\"Dot Net\",\"Dot Net Architect\",\"Java Lead\",\"PHP \",\"Java \",\"Java Python\",\"React JS\",\"React UI Lead\",\"Python\",\"UI Lead\",\"Java Fullstack\",\"Java Lead \",\"React Native\",\"React UI\",\"Backend Developer\",\"Data Scientist\",\"PHP Moodle\",\"UI Developer\",\"WPF.NET\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"interviewDateInMs\",\"precision_threshold\":100}}}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"MS Enterprise",
+			"SAP",
+			"Digital"
+		],
+		"isCumulative": false,
+		"interval": "week",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top10Interviewers": {
+		"chartName": "Top 10 Interviewers",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "interviewDateInMs",
+				"indexName": "recruitments_tarento",
+				"esInstance": "SECONDARY",
+				"aggrQuery": "{\"aggs\":{\"Top 10 Interviewers\":{\"terms\":{\"field\":\"interviewerName.keyword\",\"size\":10}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 10 Interviewers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalTrainingsCount": {
+		"chartName": "Total Trainings Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Total Trainings Count\":{\"value_count\":{\"field\":\"trainingDate\"}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Trainings Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalTrainersCount": {
+		"chartName": "Total Trainers Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Total Trainers Count\":{\"cardinality\":{\"field\":\"trainer.keyword\",\"precision_threshold\":100}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Trainers Count"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalTrainingDuration": {
+		"chartName": "Total Training Duration",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Total Training Duration\":{\"sum\":{\"field\":\"dur\",\"script\":{\"inline\":\"doc['dur'].value \/ 60\",\"lang\":\"painless\"}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Total Training Duration"
+		],
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingsPerBu": {
+		"chartName": "Trainings Per BU",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Trainings Per BU\":{\"terms\":{\"field\":\"unit.keyword\"}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Trainings Per BU"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingTypeShare": {
+		"chartName": "Training Type Share",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Trainings Type Count\":{\"terms\":{\"field\":\"type.keyword\"}}}}"
+			}
+		],
+		"chartType": "donut",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Trainings Type Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingRatingBuWise": {
+		"chartName": "Training Rating BU Wise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Trainings Ratings BU Wise\":{\"terms\":{\"field\":\"unit.keyword\",\"size\":10},\"aggs\":{\"ratings\":{\"avg\":{\"field\":\"feedbackData.feedbacks.tfques.rating\"}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "bu",
+		"documentType": "_doc",
+		"drillChart": "trainingRatingTeamWise",
+		"aggregationPaths": [
+			"Trainings Ratings BU Wise"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingRatingTeamWise": {
+		"chartName": "Training Rating Team Wise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Trainings Ratings Team Wise\":{\"terms\":{\"field\":\"team.keyword\",\"size\":10},\"aggs\":{\"ratings\":{\"avg\":{\"field\":\"feedbackData.feedbacks.tfques.rating\"}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "bu",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Trainings Ratings Team Wise"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingTrend": {
+		"chartName": "Training Trend Per BU",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Digital\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"Digital Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"Digital\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}},\"MS Enterprise\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"MSE Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"MS Enterprise\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}},\"External\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"External Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"External\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}},\"Enterprise\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"Enterprise Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"Enterprise\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}},\"NXT\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"NXT Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"NXT\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}},\"General\":{\"date_histogram\":{\"field\":\"trainingDate\",\"interval\":\"month\"},\"aggs\":{\"General Trainings\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"unit.keyword\":[\"General\"]}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"trainingDate\",\"precision_threshold\":100}}}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Enterprise",
+			"External",
+			"General",
+			"Digital",
+			"NXT",
+			"MS Enterprise"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingCountRatingWeight": {
+		"chartName": "Training Count Rating Weight",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Training Count\":{\"terms\":{\"field\":\"unit.keyword\",\"size\":10},\"aggs\":{\"trainingCount\":{\"value_count\":{\"field\":\"trainingDate\"}}}},\"Training Rating\":{\"terms\":{\"field\":\"unit.keyword\",\"size\":10},\"aggs\":{\"trainingRatingAvg\":{\"avg\":{\"field\":\"feedbackData.feedbacks.tfques.rating\"}}}},\"Training Attendees\":{\"terms\":{\"field\":\"unit.keyword\",\"size\":10},\"aggs\":{\"trainingAttendeesCount\":{\"value_count\":{\"field\":\"feedbackData.usertrainingdetails.userId.keyword\"}}}}}}"
+			}
+		],
+		"chartType": "bubblechart",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Training Count",
+			"Training Attendees",
+			"Training Rating"
+		],
+		"xPath": "Training Count",
+		"yPath": "Training Rating",
+		"zPath": "Training Attendees",
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"trainingMode": {
+		"chartName": "Modes of Training",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Training Mode\":{\"terms\":{\"field\":\"mode.keyword\",\"size\":100}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Training Mode"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top10Trainers": {
+		"chartName": "Top 10 Trainers",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Top 10 Trainers\":{\"terms\":{\"field\":\"trainer.keyword\",\"size\":10},\"aggs\":{\"uniquecount\":{\"cardinality\":{\"field\":\"trainingDate\"}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 10 Trainers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"teamLeaderboardForTrainings": {
+		"chartName": "Team Leaderboard for Trainings",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Team Leaderboard for Trainings\":{\"terms\":{\"field\":\"team.keyword\",\"size\":10},\"aggs\":{\"uniquecount\":{\"cardinality\":{\"field\":\"trainingDate\"}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Team Leaderboard for Trainings"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top10TrainingAttendees": {
+		"chartName": "Top 10 Training Attendees",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"unit.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "trainingDate",
+				"indexName": "trainingwithfeedback",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Top 10 Training Attendees\":{\"terms\":{\"field\":\"feedbackData.usertrainingdetails.name.keyword\",\"size\":10},\"aggs\":{\"uniquecount\":{\"cardinality\":{\"field\":\"trainingDate\"}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 10 Training Attendees"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"leaveNonDesignatedHolidayTrend": {
+		"chartName": "Leave & Non Designated Holiday Trend",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Leave Trend\":{\"date_histogram\":{\"field\":\"activityDate\",\"interval\":\"month\"},\"aggs\":{\"filterleaves\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"prjname.keyword\":\"Leave\"}}]}},\"aggs\":{\"count\":{\"value_count\":{\"field\":\"activityDate\"}}}}}},\"Non Designated Holiday Trend\":{\"date_histogram\":{\"field\":\"activityDate\",\"interval\":\"month\"},\"aggs\":{\"filterleaves\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"prjname.keyword\":\"Leave\"}}],\"must_not\":[{\"terms\":{\"tskname.keyword\":[\"Designated Holiday\"]}}]}},\"aggs\":{\"count\":{\"value_count\":{\"field\":\"activityDate\"}}}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Leave Trend",
+			"Non Designated Holiday Trend"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"focusLeaveHoursCount": {
+		"chartName": "Focus Leave Hours and Counts",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"LOPAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}},{\"term\":{\"tskname.keyword\":\"Loss of Pay\"}}]}},\"aggs\":{\"Loss Of Pay Hours\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}},\"MaternityAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}},{\"term\":{\"tskname.keyword\":\"Maternity Leave\"}}]}},\"aggs\":{\"Maternity Leave Count\":{\"cardinality\":{\"field\":\"uid\"}}}},\"PaternityAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}},{\"term\":{\"tskname.keyword\":\"Paternity Leave\"}}]}},\"aggs\":{\"Paternity Leave Count\":{\"cardinality\":{\"field\":\"uid\"}}}},\"ExtendedMedicalAggr\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"org.keyword\":\"Tarento\"}},{\"term\":{\"prjname.keyword\":\"Leave\"}},{\"term\":{\"tskname.keyword\":\"Extended Medical Leave\"}}]}},\"aggs\":{\"Extended Medical Leave Count\":{\"cardinality\":{\"field\":\"uid\"}}}}}}"
+			}
+		],
+		"chartType": "metriccollection",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "metricgroup",
+		"filter": "",
+		"aggregationPaths": [
+			"Loss Of Pay Hours",
+			"Maternity Leave Count",
+			"Paternity Leave Count",
+			"Extended Medical Leave Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"nxtInNonNXTProjects": {
+		"chartName": "NXT in Non NXT Project - Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Hours\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"NXT\"}}],\"must_not\":[{\"term\":{\"proUnitName.keyword\":\"NXT\"}},{\"terms\":{\"prjname.keyword\":[\"Leave\",\"General\",\"Training\",\"Recruitment\"]}}]}},\"aggs\":{\"NXT - Non NXT Hours\":{\"terms\":{\"field\":\"prjname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"NXT - Non NXT Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"digitalInNonDigitalProjects": {
+		"chartName": "Digital in Non Digital Project - Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Hours\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Digital\"}}],\"must_not\":[{\"term\":{\"proUnitName.keyword\":\"Digital\"}},{\"terms\":{\"prjname.keyword\":[\"Leave\",\"General\",\"Training\",\"Recruitment\"]}}]}},\"aggs\":{\"Digital - Non Digital Hours\":{\"terms\":{\"field\":\"prjname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Digital - Non Digital Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"mseInNonMseProjects": {
+		"chartName": "MS Enterprise in Non MSE Project - Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Hours\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"MS Enterprise\"}}],\"must_not\":[{\"term\":{\"proUnitName.keyword\":\"MS Enterprise\"}},{\"terms\":{\"prjname.keyword\":[\"Leave\",\"General\",\"Training\",\"Recruitment\"]}}]}},\"aggs\":{\"MSE - Non MSE Hours\":{\"terms\":{\"field\":\"prjname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"MSE - Non MSE Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"enterpriseInNonEnterpriseProjects": {
+		"chartName": "Enterprise in Non Enterprise Project - Hours",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Hours\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"bu.keyword\":\"Enterprise\"}}],\"must_not\":[{\"term\":{\"proUnitName.keyword\":\"Enterprise\"}},{\"terms\":{\"prjname.keyword\":[\"Leave\",\"General\",\"Training\",\"Recruitment\"]}}]}},\"aggs\":{\"Enterprise - Non Enterprise Hours\":{\"terms\":{\"field\":\"prjname.keyword\",\"size\":100},\"aggs\":{\"sum\":{\"sum\":{\"field\":\"st\",\"script\":{\"inline\":\"doc['st'].value \/ 60\",\"lang\":\"painless\"}}}}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Enterprise - Non Enterprise Hours"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"_comment": " ---------------------------- Skills Dashboard  ---------------------------- ",
+	"skillsUpdatedUsers": {
+		"chartName": "Skills Updated Users Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\", \n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"query\":{\"match\":{\"status\":\"true\"}},\"size\":0,\"aggs\":{\"Skills Updated Users\":{\"cardinality\":{\"field\":\"userId\"}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "hours",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "username",
+		"aggregationPaths": [
+			"Skills Updated Users"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5WithMostSkills": {
+		"chartName": "Top 5 Highly Skilled Employees",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\",\n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Top 5 With Most Skills\":{\"terms\":{\"field\":\"username.keyword\",\"size\":5}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "skillName",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 5 With Most Skills"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top10SkillsAcrossOrg": {
+		"chartName": "Top 10 Skills by Users",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\", \n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Top 10 Skills by Users\":{\"terms\":{\"field\":\"skillName.keyword\",\"size\":10}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "skillName",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 10 Skills by Users"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top10SkillsByPoints": {
+		"chartName": "Top 10 Skills By Points",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\",\n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Top 10 Skills By Points\":{\"terms\":{\"field\":\"skillName.keyword\",\"size\":10,\"order\":{\"skillAvg\":\"desc\"}},\"aggs\":{\"skillAvg\":{\"sum\":{\"field\":\"rating\"}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "skillName",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 10 Skills By Points"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"skillsWith5StarRatings": {
+		"chartName": "Top 10 Skills with 5 Star Rating ",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\", \n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"rating\":5}}]}},\"aggs\":{\"Top Skills With 5 Stars\":{\"terms\":{\"field\":\"skillName.keyword\",\"size\":10}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "skillName",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top Skills With 5 Stars"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"skillsWith4StarRatings": {
+		"chartName": "Top 10 Skills with 4 Star Rating ",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\", \n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"rating\":4}}]}},\"aggs\":{\"Top Skills With 4 Stars\":{\"terms\":{\"field\":\"skillName.keyword\",\"size\":10}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "skillName",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top Skills With 4 Stars"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"skillsUpdateTrend": {
+		"chartName": "Skills Update Timeline",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"ts\", \n\"bu\" : \"buName.keyword\", \n\"country\" : \"countryName.keyword\", \n\"username\" : \"username.keyword\"}",
+				"dateRefField": "createdDate",
+				"indexName": "kronos-skill-event",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Skills Update Trend\":{\"date_histogram\":{\"field\":\"createdDate\",\"interval\":\"day\"},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"userId\"}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "skillName",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Skills Update Trend"
+		],
+		"isCumulative": false,
+		"interval": "day",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"awardsByUnit": {
+		"chartName": "Awards by Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\"size\":0,\"aggs\":{\"Business Unit Awards\":{\"terms\":{\"field\":\"issuedTo.buName.keyword\"}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Business Unit Awards"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5UserWithMaximumNoOfAwards": {
+		"chartName": "Top 5 Users with Maximum No of Awards",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Users with Maximum No of Awards\": {\r\n      \"terms\": {\r\n        \"field\": \"issuedTo.username.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n              \"_count\": \"desc\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Users with Maximum No of Awards"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5Issuer": {
+		"chartName": "Top 5 Users - Issued Maximum Number of Awards",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Top 5 Issuer\": {\r\n      \"terms\": {\r\n        \"field\": \"issuedBy.username.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"_count\": \"desc\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 5 Issuer"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"topUsersByUnit": {
+		"chartName": "Top Users of Each Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n      \"aggs\": {\r\n        \"NXT\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"NXT\"\r\n                  }\r\n                }\r\n              ]\r\n          }\r\n        },\r\n        \"aggs\": {\r\n          \"TOP NXT USER\": {\r\n            \"terms\": {\r\n              \"field\": \"issuedTo.username.keyword\",\r\n              \"size\": 1\r\n            }\r\n          }\r\n        }\r\n      },\r\n       \"DIGITAL\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"DIGITAL\"\r\n                  }\r\n                }\r\n              ]\r\n          }\r\n        },\r\n        \"aggs\": {\r\n          \"TOP DIGITAL USER\": {\r\n            \"terms\": {\r\n              \"field\": \"issuedTo.username.keyword\",\r\n              \"size\": 1\r\n            }\r\n          }\r\n        }\r\n      },\r\n       \"ENTERPRISE\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"ENTERPRISE\"\r\n                  }\r\n                }\r\n              ]\r\n          }\r\n        },\r\n        \"aggs\": {\r\n          \"TOP ENTERPRISE USER\": {\r\n            \"terms\": {\r\n              \"field\": \"issuedTo.username.keyword\",\r\n              \"size\": 1\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n}"
+			}
+		],
+		"chartType": "metriccollection",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "metricgroup",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"TOP ENTERPRISE USER",
+			"TOP NXT USER",
+			"TOP DIGITAL USER"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"awardsIssuedTimeline": {
+		"chartName": "Awards Issued Timeline",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n \"aggs\" : {\r\n           \"Awards Issued Timeline\": {\r\n             \"date_histogram\": {\r\n               \"field\": \"issuedTime\",\r\n               \"interval\": \"week\"\r\n  },\r\n  \"aggs\": {\r\n    \"counts\": {\r\n      \"cardinality\": {\r\n        \"field\": \"issuedTo.id\"\r\n      }\r\n    }}\r\n  }}\r\n}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"Awards Issued Timeline"
+		],
+		"isCumulative": false,
+		"interval": "week",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"awardsIssuedByHR": {
+		"chartName": "Awards Issued by HR Team",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"query\": {\r\n    \"match\": {\r\n      \"issuedBy.buName\": \"HR\"\r\n    }\r\n  },\r\n  \"aggs\":{\r\n    \"Awards\":{\r\n      \"terms\": {\r\n        \"field\": \"award.keyword\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"Awards"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5AwardsIssuedMaximumNoOfTimes": {
+		"chartName": "Top 5 Awards - Issued Maximum Number of Times",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\":0,\r\n  \"aggs\":{\r\n    \"Top 5 Awards\":{\r\n      \"terms\": {\r\n        \"field\": \"award.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"_count\": \"desc\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 5 Awards"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5UsersWRTPoints": {
+		"chartName": "Top 5 Users wrt Points",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Top 5 Users wrt Max Points\": {\r\n      \"terms\": {\r\n        \"field\": \"issuedTo.username.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"point_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"point_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"points\"\r\n      }\r\n  }\r\n}\r\n}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"documentType": "doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 5 Users wrt Max Points"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"issuedAwardsTrendsEachUnit": {
+		"chartName": "Awards Trends of Each Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"NXT\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"issuedTime\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"NXT\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"NXT\"\r\n                  }\r\n                }\r\n                \r\n              ]\r\n            }\r\n          },\r\n          \"aggs\": {\r\n            \"Count\": {\r\n              \"cardinality\": {\r\n                \"field\": \"issuedTime\",\r\n                \"precision_threshold\": 100\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"DIGITAL\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"issuedTime\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"DIGITAL\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"DIGITAL\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          \"aggs\": {\r\n            \"Count\": {\r\n              \"cardinality\": {\r\n                \"field\": \"issuedTime\",\r\n                \"precision_threshold\": 100\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"ENTERPRISE\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"issuedTime\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"ENTERPRISE\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must\": [\r\n                {\r\n                  \"term\": {\r\n                    \"issuedTo.buName.keyword\": \"ENTERPRISE\"\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          \"aggs\": {\r\n            \"Count\": {\r\n              \"cardinality\": {\r\n                \"field\": \"issuedTime\",\r\n                \"precision_threshold\": 100\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"NXT",
+			"DIGITAL",
+			"ENTERPRISE"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalAwards": {
+		"chartName": "Total Awards",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Total Awards\": {\r\n      \"cardinality\": {\r\n        \"field\": \"award.keyword\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"Total Awards"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalReceiver": {
+		"chartName": "Total Award Receivers",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Total Receivers\": {\r\n      \"cardinality\": {\r\n        \"field\": \"issuedTo.id\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"Total Receivers"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalIssuer": {
+		"chartName": "Total Award Issuers",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"issuedTime\", \n\"bu\" : \"issuedTo.buName.keyword\"}",
+				"dateRefField": "issuedTime",
+				"indexName": "kronos-award-audit",
+				"esInstance": "QUADNARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Total Issuers\": {\r\n      \"cardinality\": {\r\n        \"field\": \"issuedBy.username.keyword\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "doc",
+		"aggregationPaths": [
+			"Total Issuers"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetActualRevenue": {
+		"chartName": "Revenue Target vs Actuals",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Actual Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Target Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Target Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Target Rev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuetargetdetail",
+		"aggregationPaths": [
+			"Actual Revenue",
+			"Target Revenue"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetActualRevenueLines": {
+		"chartName": "Revenue Target vs Actuals",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Actual Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Target Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Target Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Target Rev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuetargetdetail",
+		"aggregationPaths": [
+			"Actual Revenue",
+			"Target Revenue"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"accounts": {
+		"chartName": "Accounts",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Accounts\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"sum\": {\r\n          \"sum\": {\r\n            \"field\": \"Accounts\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "revenuetargetmaster",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Accounts"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"peoples": {
+		"chartName": "Peoples",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Peoples\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"sum\": {\r\n          \"sum\": {\r\n            \"field\": \"People\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "revenuetargetmaster",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Peoples"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"projects": {
+		"chartName": "Projects",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Projects\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"sum\": {\r\n          \"sum\": {\r\n            \"field\": \"Projects\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "revenuetargetmaster",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Projects"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"actualRevenueAndGM3": {
+		"chartName": "Actual Revenue & GM3",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Actual Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Actual GM3\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual GM3\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual GM3\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuetargetdetail",
+		"aggregationPaths": [
+			"Actual Revenue",
+			"Actual GM3"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"teamGrowth": {
+		"chartName": "Team Growth",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"JoiningDate\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "JoiningDate",
+				"indexName": "kronos-employees-status",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Joining\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"JoiningDate\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Joining Count\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must_not\": [\r\n                {\r\n                  \"terms\": {\r\n                    \"IBU Name.keyword\": [\r\n                      \"\"\r\n                    ]\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          \"aggs\": {\r\n            \"Count\": {\r\n              \"value_count\": {\r\n                \"field\": \"User ID\"\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Leaving\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"Termination Date\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Negative Count\": {\r\n          \"filter\": {\r\n            \"bool\": {\r\n              \"must_not\": [\r\n                {\r\n                  \"terms\": {\r\n                    \"IBU Name.keyword\": [\r\n                      \"\"\r\n                    ]\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          \"aggs\": {\r\n            \"Count\": {\r\n              \"value_count\": {\r\n                \"field\": \"User ID\"\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "Negative Count",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Joining",
+			"Leaving"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"swedenExistingVsNew": {
+		"chartName": "Revenue Existing Vs New - SWEDEN",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-market",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Sweden Existing Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"SwedenExistingRev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Sweden New Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"SwedenNewRev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuemarket",
+		"aggregationPaths": [
+			"Sweden Existing Revenue",
+			"Sweden New Revenue"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"indiaExistingVsNew": {
+		"chartName": "Revenue Existing Vs New - INDIA",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-market",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"India Existing Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"IndiaExistingRev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"India New Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"IndiaNewRev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuemarket",
+		"aggregationPaths": [
+			"India Existing Revenue",
+			"India New Revenue"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"targetVsWeightedValue": {
+		"chartName": "Target Vs Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n   \"aggs\": {\r\n    \"Target\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Total Target\": {\r\n          \"sum\": {\r\n            \"field\": \"Target\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Weighted Value\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Weighted Value\": {\r\n          \"sum\": {\r\n            \"field\": \"Weighted Value\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "salestargetdetail",
+		"aggregationPaths": [
+			"Target",
+			"Weighted Value"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top3SalesPersonWrtWeightedValue": {
+		"chartName": "Top 3 Sales Persons Wrt Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Top 3 Sales Person\": {\r\n      \"terms\": {\r\n        \"field\": \"Sales Person.keyword\",\r\n        \"size\": 3,\r\n        \"order\": {\r\n          \"point_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"point_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 3 Sales Person"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top3SalesPersonWrtOpportunity": {
+		"chartName": "Top 3 Sales Persons Wrt Opportunities",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Top 3 Sales Persons\": {\r\n      \"terms\": {\r\n        \"field\": \"Sales Person.keyword\",\r\n        \"size\": 3,\r\n        \"order\": {\r\n          \"opportunity_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"opportunity_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"No of Open Opportunities\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": false,
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top 3 Sales Persons"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalOpenOpportunities": {
+		"chartName": "Open Opportunities",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n   \"aggs\": {\r\n    \"Total Open Opportunities\": {\r\n      \"sum\": {\r\n        \"field\": \"No of Open Opportunities\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Total Open Opportunities"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalTarget": {
+		"chartName": "Total Target",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n   \"aggs\": {\r\n    \"Total Target\": {\r\n      \"sum\": {\r\n        \"field\": \"Target\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Total Target"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalWeightedValue": {
+		"chartName": "Total Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n   \"aggs\": {\r\n    \"Total Weighted Value\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Total Weighted Value"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top3ProjectsWrtWeightedVal": {
+		"chartName": "Top 3 Projects Wrt Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Projects\": {\r\n      \"terms\": {\r\n        \"field\": \"Project Name.keyword\",\r\n        \"size\": 3,\r\n        \"order\": {\r\n          \"weighted_value_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"weighted_value_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Projects"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalWeightedValByCustomer": {
+		"chartName": "Total Weighted Value By Customer",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Customers\": {\r\n      \"terms\": {\r\n        \"field\": \"Client Name.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"total_weighted_value\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"total_weighted_value\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Customers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top3CountriesWrtWeightedVal": {
+		"chartName": "Top 3 Countries Wrt Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Countries\": {\r\n      \"terms\": {\r\n        \"field\": \"Country.keyword\",\r\n        \"size\": 3,\r\n        \"order\": {\r\n          \"weighted_value_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"weighted_value_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Countries"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"top5CustomerWrtWeightedVal": {
+		"chartName": "Top 5 Cutomers Wrt Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Customers\": {\r\n      \"terms\": {\r\n        \"field\": \"Client Name.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"weighted_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"weighted_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Customers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"opportunities": {
+		"chartName": "Opportunities",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-sales-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Opportunities\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n    }, \r\n  \"aggs\": {\r\n    \"Total Opportunities\": {\r\n      \"sum\": {\r\n        \"field\": \"No of Open Opportunities\"\r\n      }\r\n    }\r\n  }\r\n}\r\n}\r\n}\r\n"
+			}
+		],
+		"chartType": "multibar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "salestargetdetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Opportunities"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"totalWeightedValueByCustomer": {
+		"chartName": "Total Weighted Value By Customer",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Customers\": {\r\n      \"terms\": {\r\n        \"field\": \"Client Name.keyword\",\r\n        \"size\": 5,\r\n        \"order\": {\r\n          \"total_weighted_value\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"total_weighted_value\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "polararea",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Customers"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"projectsWrtWeightedVal": {
+		"chartName": "Projects Wrt Weighted Value",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\"time\" : \"AsOnMonth\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-opportunity-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n  \"aggs\": {\r\n    \"Projects\": {\r\n      \"terms\": {\r\n        \"field\": \"Project Name.keyword\",\r\n        \"order\": {\r\n          \"weighted_value_sum\": \"desc\"\r\n        }\r\n      },\r\n    \"aggs\": {\r\n    \"weighted_value_sum\": {\r\n      \"sum\": {\r\n        \"field\": \"Weighted Value\"\r\n      }\r\n}}}}}"
+			}
+		],
+		"chartType": "donut",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "opportunitydetail",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Projects"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"actualRevenueAndGM3Mixed": {
+		"chartName": "Actual Revenue & GM3",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n       \"Actual GM3\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual GM3\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual GM3\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			},
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Actual Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "line_bar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuetargetdetail",
+		"aggregationPaths": [
+			"Actual Revenue",
+			"Actual GM3"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseReportTrend": {
+		"chartName": "Expense Report Trend",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Expense Report Trend\":{\"date_histogram\":{\"field\":\"from\",\"interval\":\"week\"}}}}}}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Expense Report Trend"
+		],
+		"isCumulative": false,
+		"interval": "week",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"cumulativeRevenueGrowth": {
+		"chartName": "Revenue Growth (Cumulative)",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-detail",
+				"esInstance": "PRIMARY",
+				"isCumulative": true,
+				"aggrQuery": "{\r\n  \"size\": 0, \r\n  \"aggs\": {\r\n    \"Cumulative Revenue\": {\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n         \"Cumulative Value\":{\r\n          \"cumulative_sum\": {\r\n            \"buckets_path\": \"Actual Revenue\"\r\n          }\r\n        },\r\n        \"Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual\/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Revenue\":{\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Actual\/Forecast Rev\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"Target Revenue\":{\r\n      \"date_histogram\": {\r\n        \"field\": \"AsOnMonth\",\r\n        \"interval\": \"month\"\r\n      },\r\n      \"aggs\": {\r\n        \"Target Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"Target Rev\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "line",
+		"valueType": "number",
+		"action": "Cumulative Value",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "revenuetargetdetail",
+		"aggregationPaths": [
+			"Revenue",
+			"Cumulative Revenue",
+			"Target Revenue"
+		],
+		"isCumulative": true,
+		"interval": "month"
+	},
+	"topProjectExpenses": {
+		"chartName": "Top Project Expenses",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"approver.buName.keyword\", \n\"userBu\" : \"user.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Top Project Expenses\":{\"terms\":{\"field\":\"projectName.keyword\",\"size\":10}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top Project Expenses"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseByUnit": {
+		"chartName": "Expense By Unit",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"approver.buName.keyword\", \n\"userBu\" : \"user.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Expense By Unit\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":20}}}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Expense By Unit"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseCount": {
+		"chartName": "Expense Report Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Expense Count\":{\"cardinality\":{\"field\":\"_id\"}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Expense Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ytdActualGm3": {
+		"chartName": "YTD GM3 (Actual)",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n      \"aggs\": {\r\n        \"YTD Actual GM3\": {\r\n          \"sum\": {\r\n            \"field\": \"YTD GM3 (A)\"\r\n          }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "revenuetargetmaster",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"YTD Actual GM3"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ytdTargetGM3": {
+		"chartName": "YTD GM3 (Target)",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n      \"aggs\": {\r\n        \"YTD Target GM3\": {\r\n          \"sum\": {\r\n            \"field\": \"YTD GM3 (T)\"\r\n          }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "revenuetargetmaster",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"YTD Target GM3"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ytdTargetRevenue": {
+		"chartName": "YTD Rev (Target)",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n      \"aggs\": {\r\n        \"YTD Target Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"YTD Rev (T)\"\r\n          }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "revenuetargetmaster",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"YTD Target Revenue"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ytdActualRevenue": {
+		"chartName": "YTD Rev (Actual)",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"time\" : \"AsOnMonth\", \n\"bu\" : \"IBU Name.keyword\"}",
+				"dateRefField": "AsOnMonth",
+				"indexName": "kronos-revenue-target-master",
+				"esInstance": "PRIMARY",
+				"aggrQuery": "{\r\n  \"size\": 0,\r\n      \"aggs\": {\r\n        \"YTD Actual Revenue\": {\r\n          \"sum\": {\r\n            \"field\": \"YTD Rev (A)\"\r\n          }\r\n    }\r\n  }\r\n}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "revenuetargetmaster",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"YTD Actual Revenue"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseSubmittedTrend": {
+		"chartName": "Expense Submitted Trend",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Expense Submitted Trend\":{\"date_histogram\":{\"field\":\"submittedDate\",\"interval\":\"day\"}}}}}}"
+			}
+		],
+		"chartType": "calendarheatmap",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Expense Submitted Trend"
+		],
+		"isCumulative": false,
+		"interval": "date",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"topProjectClientExpenses": {
+		"chartName": "Top Project Client Expenses",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Top Project Client Expenses\":{\"terms\":{\"field\":\"projectClientName.keyword\",\"size\":10}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top Project Client Expenses"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"topUserExpenseClaim": {
+		"chartName": "Top User Expense Claim",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Filters on Org Only\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Top User Expense Claim\":{\"terms\":{\"field\":\"user.username.keyword\",\"size\":10}}}}}}"
+			}
+		],
+		"chartType": "horizontalbar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Top User Expense Claim"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseByReimbursement": {
+		"chartName": "Reimbursement Composition",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\": {\"Filters on Org and category\": {\"filter\": {\"bool\": {\"must\":[{\"term\":{\"orgId\": 1}},{\"term\":{\"category\": \"reimbursement\"}}]}},\"aggs\": {\"Expense By Reimbursement\": {\"terms\": {\"field\": \"type.keyword\",\"size\": 10}}}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Expense By Reimbursement"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"expenseByAllowance": {
+		"chartName": "Allowance Composition",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\": {\"Filters on Org and category\": {\"filter\": {\"bool\": {\"must\":[{\"term\":{\"orgId\": 1}},{\"term\":{\"category\": \"allowance\"}}]}},\"aggs\": {\"Expense By Allowance\": {\"terms\": {\"field\": \"type.keyword\",\"size\": 10}}}}}}"
+			}
+		],
+		"chartType": "pie",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Expense By Allowance"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"pendingExpenses": {
+		"chartName": "Pending Expense Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\": {\"Filters on Org\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"orgId\": 1}}]}},\"aggs\": {\"Pending Expense Count\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"status.keyword\": \"pending\"}}]}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Pending Expense Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"waitingExpenses": {
+		"chartName": "Waiting Expense Count",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\": {\"Filters on Org\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"orgId\": 1}}]}},\"aggs\": {\"Waiting Expense Count\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"status.keyword\": \"waiting\"}}]}}}}}}}"
+			}
+		],
+		"chartType": "metric",
+		"valueType": "number",
+		"isDecimal": false,
+		"drillChart": "none",
+		"documentType": "_doc",
+		"action": "",
+		"filter": "",
+		"aggregationPaths": [
+			"Waiting Expense Count"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ExpenseCategoryUnitwise": {
+		"chartName": "Expense Category Unitwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"FiltersonOrgOnly\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"ReimburseCat\":{\"filter\":{\"term\":{\"category.keyword\":\"Reimbursement\"}},\"aggs\":{\"Reimbursement\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":10}}}},\"AllowanceCat\":{\"filter\":{\"term\":{\"category.keyword\":\"Allowance\"}},\"aggs\":{\"Allowance\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":10}}}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Reimbursement",
+			"Allowance"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ExpenseCategoryMonthwise": {
+		"chartName": "Expense Category Monthwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"FiltersonOrgOnly\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"ReimburseCat\":{\"filter\":{\"term\":{\"category.keyword\":\"Reimbursement\"}},\"aggs\":{\"Reimbursement\":{\"date_histogram\":{\"field\":\"from\",\"interval\":\"month\"}}}},\"AllowanceCat\":{\"filter\":{\"term\":{\"category.keyword\":\"Allowance\"}},\"aggs\":{\"Allowance\":{\"date_histogram\":{\"field\":\"from\",\"interval\":\"month\"}}}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Reimbursement",
+			"Allowance"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ExpenseAmountMonthwise": {
+		"chartName": "Expense Amount Monthwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"FilterOnOrg\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Reimbursement\":{\"filter\":{\"term\":{\"category.keyword\":\"Reimbursement\"}},\"aggs\":{\"NAME\":{\"date_histogram\":{\"field\":\"from\",\"interval\":\"month\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"amt\":{\"sum\":{\"field\":\"amountInINR\"}}}}}},\"Allowance\":{\"filter\":{\"term\":{\"category.keyword\":\"Allowance\"}},\"aggs\":{\"NAME\":{\"date_histogram\":{\"field\":\"from\",\"interval\":\"month\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"amt\":{\"sum\":{\"field\":\"amountInINR\"}}}}}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Reimbursement",
+			"Allowance"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"ExpenseAmountUnitwise": {
+		"chartName": "Expense Amount Unitwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"FilterOnOrg\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}}]}},\"aggs\":{\"Reimbursement\":{\"filter\":{\"term\":{\"category.keyword\":\"Reimbursement\"}},\"aggs\":{\"UserUnit\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":10},\"aggs\":{\"amt\":{\"sum\":{\"field\":\"amountInINR\"}}}}}},\"Allowance\":{\"filter\":{\"term\":{\"category.keyword\":\"Allowance\"}},\"aggs\":{\"UserUnit\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":10},\"aggs\":{\"amt\":{\"sum\":{\"field\":\"amountInINR\"}}}}}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"Reimbursement",
+			"Allowance"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"avgTimeToApproveMonthwise": {
+		"chartName": "Average Time Taken to Approve Expense Monthwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Monthwise\":{\"date_histogram\":{\"field\":\"submittedDate\",\"interval\":\"month\"},\"aggs\":{\"AverageValue\":{\"avg\":{\"field\":\"timeTakenToUpdate\"}}}}}}"
+			}
+		],
+		"chartType": "stackedbar",
+		"valueType": "number",
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Monthwise"
+		],
+		"isCumulative": false,
+		"interval": "month",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"avgTimeToApproveUnitwise": {
+		"chartName": "Average Time Taken to Approve Expense Unitwise",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"from\", \n\"bu\" : \"user.buName.keyword\", \n\"approverBu\" : \"approver.buName.keyword\"}",
+				"dateRefField": "from",
+				"indexName": "kronos-expense-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"Unitwise\":{\"terms\":{\"field\":\"user.buName.keyword\",\"size\":10},\"aggs\":{\"AverageValue\":{\"avg\":{\"field\":\"timeTakenToUpdate\"}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"Unitwise"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"timeReportSubmissionTrend": {
+		"chartName": "Report Submission Trend",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"activityDate\", \n\"bu\" : \"bu.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "ts",
+				"indexName": "kronos-enriched-time-data",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"FilterByOrg\":{\"filter\":{\"term\":{\"orgId\":1}}},\"ReportCount\":{\"date_histogram\":{\"field\":\"ts\",\"interval\":\"day\"}}}}"
+			}
+		],
+		"chartType": "calendarheatmap",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"drillChart": "none",
+		"documentType": "_doc",
+		"aggregationPaths": [
+			"ReportCount"
+		],
+		"isCumulative": false,
+		"interval": "date",
+		"alwaysView": "",
+		"insight": {
+			
+		},
+		"_comment": " "
+	},
+	"timeReportNonCompliance": {
+		"chartName": "Time Report Non Compliance",
+		"queries": [
+			{
+				"module": "COMMON",
+				"requestQueryMap": "{\r\n  \"ts\" : \"activityDate\", \n\"bu\" : \"unitName.keyword\", \n\"userBuId\" : \"unitId\"}",
+				"dateRefField": "activityDate",
+				"indexName": "kronos-non-compliance",
+				"esInstance": "TERNARY",
+				"aggrQuery": "{\"aggs\":{\"orgFilter\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"orgId\":1}},{\"term\":{\"isActive\":true}}]}},\"aggs\":{\"nonCompliance\":{\"terms\":{\"field\":\"username.keyword\",\"size\":10,\"order\":{\"_count\":\"desc\"}}}}}}}"
+			}
+		],
+		"chartType": "bar",
+		"valueType": "number",
+		"isDecimal": true,
+		"action": "",
+		"filter": "",
+		"documentType": "_doc",
+		"drillChart": "none",
+		"aggregationPaths": [
+			"nonCompliance"
+		],
+		"insight": {
+			
+		},
+		"_comment": " "
+	}
+}

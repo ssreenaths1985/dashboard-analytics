@@ -1,0 +1,425 @@
+{
+  "_comment": "Master dashboard which holds all the possible visualisation. Note new dashboards/visualisations can be added",
+  "dashboards": [
+    {
+      "name": "Source Content Report",
+      "id": "sourcecontentreport",
+      "isActive": "",
+      "style": "tabbed",
+      "filters": [
+        {
+          "name": "Content",
+          "id": 1,
+          "key": "content",
+          "values": [
+          	"All", 
+          	"Collection",
+            "Course",
+            "Knowledge Board",
+            "Learning Path",
+            "Resource"
+          ]
+        },
+        {
+          "name": "Status",
+          "id": 2,
+          "key": "status",
+          "values": [
+          	"All",
+			"Live",
+			"InReview",
+			"Unpublished",
+			"Reviewed",
+			"Draft",
+			"Processing",
+			"Deleted"
+          ]
+        }
+      ],
+      "widgetCharts": [
+        {
+          "id": "coursesCount",
+          "name": "Courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "discussionsCount",
+          "name": "Discussions",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "usersCount",
+          "name": "Users",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": []
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 3",
+          "vizArray": [
+            {
+              "id": 11,
+              "name": "Source and Content Report",
+              "dimensions": {
+                "height": 200,
+                "width": 12
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "courseSourceReport",
+                  "name": "Course Source Report",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Source Status Report",
+      "id": "sourcestatusreport",
+      "isActive": "",
+      "style": "tabbed",
+      "filters": [
+        {
+          "name": "Content",
+          "id": 1,
+          "key": "content",
+          "values": [
+          	"All", 
+          	"Collection",
+            "Course",
+            "Knowledge Board",
+            "Learning Path",
+            "Resource"
+          ]
+        },
+        {
+          "name": "Status",
+          "id": 2,
+          "key": "status",
+          "values": [
+          	"All",
+			"Live",
+			"InReview",
+			"Unpublished",
+			"Reviewed",
+			"Draft",
+			"Processing",
+			"Deleted"
+          ]
+        }
+      ],
+      "widgetCharts": [
+        {
+          "id": "coursesCount",
+          "name": "Courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "discussionsCount",
+          "name": "Discussions",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "usersCount",
+          "name": "Users",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": []
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 4",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Source and Status Report",
+              "dimensions": {
+                "height": 200,
+                "width": 12
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "sourceStatusReport",
+                  "name": "Source Status Report",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Source Category Report",
+      "id": "sourcecategoryreport",
+      "isActive": "",
+      "style": "tabbed",
+      "filters": [
+        {
+          "name": "Content",
+          "id": 1,
+          "key": "content",
+          "values": [
+          	"All", 
+          	"Collection",
+            "Course",
+            "Knowledge Board",
+            "Learning Path",
+            "Resource"
+          ]
+        },
+        {
+          "name": "Status",
+          "id": 2,
+          "key": "status",
+          "values": [
+          	"All",
+			"Live",
+			"InReview",
+			"Unpublished",
+			"Reviewed",
+			"Draft",
+			"Processing",
+			"Deleted"
+          ]
+        }
+      ],
+      "widgetCharts": [
+        {
+          "id": "coursesCount",
+          "name": "Courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "discussionsCount",
+          "name": "Discussions",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "usersCount",
+          "name": "Users",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": []
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 4",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Source Category Report",
+              "dimensions": {
+                "height": 200,
+                "width": 12
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "sourceCategoryReport",
+                  "name": "Source Category Report",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Department Wise User Report",
+      "id": "deptwiseuserreport",
+      "isActive": "",
+      "style": "tabbed",
+      "filters": [
+      ],
+      "widgetCharts": [
+        {
+          "id": "coursesCount",
+          "name": "Courses",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "discussionsCount",
+          "name": "Discussions",
+          "code": "",
+          "chartType": "metric",
+          "order": 2,
+          "filter": "",
+          "headers": []
+        },
+        {
+          "id": "usersCount",
+          "name": "Users",
+          "code": "",
+          "chartType": "metric",
+          "order": 4,
+          "filter": "",
+          "headers": []
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 4",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Department Wise User Report",
+              "dimensions": {
+                "height": 200,
+                "width": 12
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "departmentUser",
+                  "name": "Department Wise User Report",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competency Source Status Report",
+      "id": "compsourcestatusreport",
+      "isActive": "",
+      "style": "tabbed",
+      "filters": [
+        {
+          "name": "Type",
+          "id": 1,
+          "key": "type",
+          "values": [
+          	"All", 
+          	"Domain",
+            "Behavioural",
+            "Functional"
+          ]
+        },
+        {
+          "name": "Source",
+          "id": 2,
+          "key": "source",
+          "values": [
+            "All", 
+          	"ISTM",
+            "CBIC",
+            "Civil Service Competency Dictionary",
+            "Civil Service Dictionary", 
+            "DoPT"
+          ]
+        }
+      ],
+      "widgetCharts": [
+        {
+          "id": "competenciesCount",
+          "name": "Competencies",
+          "code": "",
+          "chartType": "metric",
+          "order": 1,
+          "filter": "",
+          "headers": []
+        }
+      ],
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "Visualization Row 4",
+          "vizArray": [
+            {
+              "id": 31,
+              "name": "Competency Source Status Report",
+              "dimensions": {
+                "height": 200,
+                "width": 12
+              },
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "competencySourceStatusReport",
+                  "name": "Competency Source Status Report",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

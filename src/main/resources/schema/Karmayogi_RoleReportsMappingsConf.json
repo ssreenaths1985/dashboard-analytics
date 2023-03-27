@@ -1,0 +1,121 @@
+{
+  "_comment": "Holds mapping for each role with and its associated dashboards",
+  "roles": [
+    {
+      "_comment": "This is the Admin role who sees mostly all the dashboards",
+      "roleId": 2068,
+      "roleName": "Dashboard Admin",
+      "isSuper": "",
+      "orgId": "",
+      "dashboards": [
+        {
+          "name": "Source Content Report",
+          "id": "sourcecontentreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Content Types."
+        },
+        {
+          "name": "Source Status Report",
+          "id": "sourcestatusreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Status of those content."
+        },
+        {
+          "name": "Competency Source Status Report",
+          "id": "compsourcestatusreport",
+          "description" : "Report of Competencies created and the statuses of them"
+        },
+        {
+          "name": "Source Category Report",
+          "id": "sourcecategoryreport",
+          "description" : "Report which shows the sources who have been uploading the content and the category of those content."
+        },
+        {
+          "name": "Department Wise User Report",
+          "id": "deptwiseuserreport",
+          "description" : "Report which gives the number of users available on the platform from different departments."
+        }
+      ]
+    },
+    {
+      "_comment": "This is the Admin role who sees mostly all the dashboards",
+      "roleId": 2083,
+      "roleName": "FRAC Admin",
+      "isSuper": "",
+      "orgId": "",
+      "dashboards": [
+        {
+          "name": "Competency Source Status Report",
+          "id": "compsourcestatusreport",
+          "description" : "Report of Competencies created and the statuses of them"
+        }
+      ]
+    },
+    {
+      "_comment": "This is the Admin role who sees mostly all the dashboards",
+      "roleId": 2084,
+      "roleName": "iGOT Admin",
+      "isSuper": "",
+      "orgId": "",
+      "dashboards": [
+        {
+          "name": "Source Content Report",
+          "id": "sourcecontentreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Content Types."
+        },
+        {
+          "name": "Source Status Report",
+          "id": "sourcestatusreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Status of those content."
+        },
+        {
+          "name": "Source Category Report",
+          "id": "sourcecategoryreport",
+          "description" : "Report which shows the sources who have been uploading the content and the category of those content."
+        },
+        {
+          "name": "Competency Source Status Report",
+          "id": "compsourcestatusreport",
+          "description" : "Report of Competencies created and the statuses of them"
+        },
+        {
+          "name": "Department Wise User Report",
+          "id": "deptwiseuserreport",
+          "description" : "Report which gives the number of users available on the platform from different departments."
+        }
+      ]
+    },
+    {
+      "_comment": "This is the Admin role who sees mostly all the dashboards",
+      "roleId": 2085,
+      "roleName": "DOPT Admin",
+      "isSuper": "",
+      "orgId": "",
+      "dashboards": [
+        {
+          "name": "Source Content Report",
+          "id": "sourcecontentreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Content Types."
+        },
+        {
+          "name": "Source Status Report",
+          "id": "sourcestatusreport",
+          "description" : "Report which shows the sources who have been uploading the content and the Status of those content."
+        },
+        {
+          "name": "Source Category Report",
+          "id": "sourcecategoryreport",
+          "description" : "Report which shows the sources who have been uploading the content and the category of those content."
+        },
+        {
+          "name": "Competency Source Status Report",
+          "id": "compsourcestatusreport",
+          "description" : "Report of Competencies created and the statuses of them"
+        },
+        {
+          "name": "Department Wise User Report",
+          "id": "deptwiseuserreport",
+          "description" : "Report which gives the number of users available on the platform from different departments."
+        }
+      ]
+    }
+  ]
+}

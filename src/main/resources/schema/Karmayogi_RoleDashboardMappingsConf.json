@@ -1,0 +1,506 @@
+{
+  "_comment": "Holds mapping for each role with and its associated dashboards",
+  "roles": [
+    {
+      "_comment": "This is the Admin role who sees mostly all the dashboards",
+      "roleId": 2068,
+      "roleName": "PUBLIC",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for MDO Admin",
+      "roleId": 2069,
+      "roleName": "MDO_ADMIN",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard",
+              "landingDashboard" : true
+            },
+            {
+              "name": "Overview",
+              "id": "overview"
+            }
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard",
+              "landingDashboard" : true
+            },
+            {
+              "name": "Overview",
+              "id": "overview"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for SPV Admin",
+      "roleId": 2070,
+      "roleName": "SPV_ADMIN",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+            {
+              "name": "Overview",
+              "id": "overview"
+            },
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard"
+            },
+            {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+            {
+              "name": "CEO Dashboard",
+              "id": "ceodashboards",
+              "landingDashboard" : true
+            },
+            {
+              "name": "Overview",
+              "id": "overview"
+            },
+            {
+              "name": "SPV Dashboard",
+              "id": "spvdashboard"
+            },
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard"
+            }
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          	{
+              "name": "CEO Dashboard",
+              "id": "ceodashboards"
+            },
+            {
+              "name": "Overview",
+              "id": "overview"
+            },
+            {
+              "name": "SPV Dashboard",
+              "id": "spvdashboard"
+            },
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard"
+            },
+            {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard",
+              "landingDashboard" : true
+            }
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+            {
+              "name": "CEO Dashboard",
+              "id": "ceodashboards",
+              "landingDashboard" : true
+            },
+            {
+              "name": "Overview",
+              "id": "overview"
+            },
+            {
+              "name": "SPV Dashboard",
+              "id": "spvdashboard"
+            },
+            {
+              "name": "MDO Dashboard",
+              "id": "mdodashboard"
+            },
+            {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CBP Admin",
+      "roleId": 2071,
+      "roleName": "CBP_ADMIN",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+            {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "ca",
+          "dashboards": [
+            {
+              "name": "Course Analytics",
+              "id": "courseanalytics"
+            }
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          {
+              "name": "CBP Dashboard",
+      		  "id": "cbpdashboard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CONTENT_REVIEWER",
+      "roleId": 2072,
+      "roleName": "CONTENT_REVIEWER",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "ca",
+          "dashboards": [
+            {
+              "name": "Course Analytics",
+              "id": "courseanalytics"
+            }
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CONTENT_CREATOR",
+      "roleId": 2073,
+      "roleName": "CONTENT_CREATOR",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "ca",
+          "dashboards": [
+            {
+              "name": "Course Analytics",
+              "id": "courseanalytics"
+            }
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CONTENT_PUBLISHER",
+      "roleId": 2074,
+      "roleName": "CONTENT_PUBLISHER",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "ca",
+          "dashboards": [
+            {
+              "name": "Course Analytics",
+              "id": "courseanalytics",
+              "landingDashboard" : true
+            }
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CBC_ADMIN",
+      "roleId": 2075,
+      "roleName": "CBC_ADMIN",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "This is the role for CBC_MEMBER",
+      "roleId": 2076,
+      "roleName": "CBC_MEMBER",
+      "isSuper": "",
+      "orgId": "",
+      "realms": [
+        {
+          "name": "mdo",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "default",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "spv",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbp",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "cbc",
+          "dashboards": [
+          ]
+        },
+        {
+          "name": "igot",
+          "dashboards": [
+          ]
+        }
+      ]
+    }
+  ]
+}
